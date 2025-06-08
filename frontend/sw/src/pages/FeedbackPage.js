@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { submitFeedback } from "../services/feedbackService";
 
 const FeedbackPage = () => {
     const [formData, setFormData] = useState({
@@ -8,18 +9,29 @@ const FeedbackPage = () => {
         category: 'Feedback',
         subject: '',
         message: '',
-        image: null,
+        imageBase64: '',
     });
 
     const [submitted, setSubmitted] = useState(false);
+    const [responseMsg, setResponseMsg] = useState('');
+    const [errorMsg, setErrorMsg] = useState('');
 
     const handleChange = (e) => {
         const { name, value, files } = e.target;
+
         if (name === 'image') {
-            setFormData((prevData) => ({
-                ...prevData,
-                image: files[0],
-            }));
+            const file = files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                const base64 = reader.result.split(",")[1]; // remove data:image/... prefix
+                setFormData((prevData) => ({
+                    ...prevData,
+                    imageBase64: base64,
+                }));
+            };
+            reader.readAsDataURL(file);
         } else {
             setFormData((prevData) => ({
                 ...prevData,
@@ -28,18 +40,27 @@ const FeedbackPage = () => {
         }
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        setResponseMsg('');
+        setErrorMsg('');
+        setSubmitted(false);
 
-        // Prepare form data for submission (adjust to your backend needs)
-        const data = new FormData();
-        Object.entries(formData).forEach(([key, value]) => {
-            if (value) data.append(key, value);
-        });
-
-        // TODO: Implement actual submission logic here (e.g., fetch POST)
-        console.log('Form submitted with data:', formData);
-        setSubmitted(true);
+        try {
+            await submitFeedback(formData);
+            setSubmitted(true);
+            setResponseMsg("Thank you for your feedback!");
+            setFormData({
+                name: '',
+                email: '',
+                category: 'Feedback',
+                subject: '',
+                message: '',
+                imageBase64: '',
+            });
+        } catch (error) {
+            setErrorMsg(error.message);
+        }
     };
 
     return (
@@ -65,11 +86,15 @@ const FeedbackPage = () => {
                 <div className="col-lg-8">
                     {submitted ? (
                         <div className="alert alert-success text-center p-4">
-                            <h5 className="mb-3">Thank you for your feedback!</h5>
+                            <h5 className="mb-3">{responseMsg}</h5>
                             <p>We appreciate your input and will review it shortly.</p>
                         </div>
                     ) : (
-                        <form onSubmit={handleSubmit} className="bg-white shadow-sm rounded p-4" encType="multipart/form-data">
+                        <form onSubmit={handleSubmit} className="bg-white shadow-sm rounded p-4">
+                            {errorMsg && (
+                                <div className="alert alert-danger">{errorMsg}</div>
+                            )}
+
                             <div className="mb-3">
                                 <label className="form-label">Name (optional)</label>
                                 <input
