@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import java.util.Base64;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class FeedbackService {
@@ -33,5 +35,27 @@ public class FeedbackService {
 
         Feedback saved = repository.save(feedback);
         return "Feedback submitted successfully with ID: " + saved.getFeedbackId();
+    }
+
+    public List<FeedbackDTO> getAllFeedbacks() {
+        return repository.findAll().stream()
+                .map(this::mapToDTO)
+                .collect(Collectors.toList());
+    }
+
+    private FeedbackDTO mapToDTO(Feedback feedback) {
+        FeedbackDTO dto = new FeedbackDTO();
+        dto.setName(feedback.getName());
+        dto.setEmail(feedback.getEmail());
+        dto.setCategory(feedback.getCategory());
+        dto.setSubject(feedback.getSubject());
+        dto.setMessage(feedback.getMessage());
+
+        // Optional: Include base64 image string if needed
+        if (feedback.getImageData() != null) {
+            dto.setImageBase64(Base64.getEncoder().encodeToString(feedback.getImageData()));
+        }
+
+        return dto;
     }
 }

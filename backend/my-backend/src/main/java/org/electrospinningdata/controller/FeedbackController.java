@@ -7,6 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/feedback")
 public class FeedbackController {
@@ -29,4 +31,11 @@ public class FeedbackController {
             return ResponseEntity.status(500).body("Error submitting feedback: " + e.getMessage());
         }
     }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<FeedbackDTO>> getAllFeedback() {
+        List<FeedbackDTO> feedbacks = service.getAllFeedbacks(); // Make sure service exists
+        return ResponseEntity.ok(feedbacks);
+    }
+
 }

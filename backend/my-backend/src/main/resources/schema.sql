@@ -29,6 +29,17 @@
 --    user_info;
 
 
+CREATE TABLE IF NOT EXISTS feedback (
+    feedback_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255),
+    email VARCHAR(255),
+    category VARCHAR(255),
+    subject VARCHAR(255) NOT NULL,
+    message TEXT,
+    image_data LONGBLOB
+);
+
+
 CREATE TABLE IF NOT EXISTS users (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     email VARCHAR(255) NOT NULL UNIQUE,
