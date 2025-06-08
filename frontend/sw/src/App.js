@@ -18,6 +18,7 @@ import DataSubmissionWrapper from "./components/DataSubmission/DataSubmissionWra
 import ContactAndFeedbackPage from "./pages/ContactAndFeedbackPage";
 import FeedbackPage from "./pages/FeedbackPage";
 import PreviewDatasetPage from "./components/preview/DatasetPreviewPage";
+import Moderation from "./components/moderation/Moderation";
 
 import Login from './pages/admin/Login';
 
@@ -39,6 +40,7 @@ const App = () => {
           <Route path="/electrospinningTable" element={<DataSubmissionWrapper />} />
           <Route path="/feedbackPage" element={<Layout><FeedbackPage /></Layout>} />
           <Route path="/previewDatasetPage" element={<PreviewDatasetPage />} />
+          <Route path="/moderationPage" element={<Moderation />} />
           <Route path="/contactAndFeedbackPage" element={<Layout><ContactAndFeedbackPage /></Layout>} />
         </Routes>
       </Router>
