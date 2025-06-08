@@ -7,7 +7,7 @@ export function fetchPendingExperiments() {
 }
 
 export function moderateExperiment(id, action) {
-    return apiRequest(endpoints.moderate(id, action), {
+    return apiRequest(endpoints.moderation(id, action), {
         method: 'POST',
     });
 }
