@@ -1,0 +1,104 @@
+.download-container {
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+    text-align: center;
+    color: #333;
+  }
+.previewSection: {
+  marginTop: '2rem',
+  padding: '1rem',
+  backgroundColor: '#f9f9f9',
+  borderRadius: '8px',
+},
+
+.tableContainer: {
+  overflowX: 'auto',
+  marginTop: '1rem',
+},
+
+.previewTable: {
+  width: '100%',
+  borderCollapse: 'collapse',
+  textAlign: 'left',
+},
+
+.previewTableThTd: {
+  border: '1px solid #ddd',
+  padding: '8px',
+},
+
+.download-header {
+    margin-bottom: 20px;
+  }
+  
+  .title {
+    font-size: 2em;
+    color: #2c3e50;
+  }
+  
+  .subtitle {
+    font-size: 1.2em;
+    color: #7f8c8d;
+  }
+  
+  .file-section {
+    background-color: #ecf0f1;
+    padding: 15px;
+    margin: 20px auto;
+    border-radius: 10px;
+    max-width: 600px;
+  }
+  
+  .dataset-info {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .dataset-info li {
+    margin: 5px 0;
+    font-size: 1.1em;
+  }
+  
+  .download-section {
+    margin: 20px 0;
+  }
+  
+  .download-button {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+  }
+  
+  .download-button:hover {
+    background-color: #2980b9;
+  }
+  
+  .note {
+    font-size: 0.9em;
+    color: #95a5a6;
+  }
+  
+  .download-footer {
+    margin-top: 30px;
+    font-size: 0.9em;
+    color: #95a5a6;
+  }
+  
+  .contribute-link,
+  .terms-link,
+  .license-link {
+    color: #e74c3c;
+    text-decoration: none;
+  }
+  
+  .contribute-link:hover,
+  .terms-link:hover,
+  .license-link:hover {
+    text-decoration: underline;
+  }
+

@@ -1,0 +1,463 @@
+/* General Container Styling */
+.container {
+  max-width: 2400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+}
+
+/* Title Styling */
+.title {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+/* Row Selection Styling */
+.row-selection {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.row-selection label {
+  font-size: 16px;
+  color: #333;
+  margin-right: 10px;
+}
+
+.row-count-input {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 60px;
+  text-align: center;
+}
+
+/* Table Styling */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: auto;
+  margin-bottom: 20px;
+  min-width: 800px;
+}
+
+.table th,
+.table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  word-wrap: break-word;
+}
+
+.table th {
+  background-color: #3f51b5;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+}
+
+.table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Header Dropdown Styling */
+.unit-select-header {
+  font-size: 0.9rem;
+  padding: 5px;
+  width: 100%;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.unit-select-header:hover {
+  background-color: #e0e0e0;
+  border-color: #3f51b5;
+  color: #3f51b5;
+}
+
+/* Input Fields Styling */
+.input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.input:focus {
+  border-color: #3f51b5;
+  outline: none;
+}
+
+/* Button Styling */
+.add-btn, .submit-btn, .remove-btn {
+  padding: 10px 15px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.add-btn {
+  background-color: #4caf50;
+  color: white;
+  margin-right: 10px;
+}
+
+.add-btn:hover {
+  background-color: #45a049;
+}
+
+.submit-btn {
+  background-color: #3f51b5;
+  color: white;
+}
+
+.submit-btn:hover {
+  background-color: #303f9f;
+}
+
+.remove-btn {
+  background-color: #f44336;
+  color: white;
+  padding: 6px 10px;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.remove-btn:hover {
+  background-color: #d32f2f;
+}
+
+/* Buttons Container */
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.buttons button {
+  width: 48%;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .table th, .table td {
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  .input {
+    font-size: 12px;
+  }
+
+  .unit-select-header {
+    width: 100%;
+    font-size: 12px;
+  }
+
+  .buttons {
+    flex-direction: column;
+  }
+
+  .add-btn, .submit-btn {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .container {
+    overflow-x: auto;
+  }
+}
+
+/* Modal Styling */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.modal-content h3 {
+  margin-bottom: 20px;
+}
+
+.modal-content .input {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.modal-content .buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cancel-btn {
+  padding: 10px 15px;
+  font-size: 14px;
+  background-color: #ccc;
+  color: black;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cancel-btn:hover {
+  background-color: #bbb;
+}
+
+/* General Dropdown Styling */
+.unit-select-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.unit-select-dropdown select {
+  appearance: none;
+  -webkit-appearance: none; /* Safari */
+  -moz-appearance: none; /* Firefox */
+  font-size: 0.9rem;
+  padding: 10px;
+  width: 100%;
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.unit-select-dropdown select:focus {
+  outline: none;
+  border-color: #3f51b5;
+  box-shadow: 0 0 5px rgba(63, 81, 181, 0.5);
+}
+
+.unit-select-dropdown select:hover {
+  background-color: #f9f9f9;
+}
+
+/* Dropdown Arrow */
+.unit-select-dropdown select::-ms-expand {
+  display: none; /* Remove the default dropdown arrow for IE */
+}
+
+.unit-select-dropdown:after {
+  content: "▼";
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  font-size: 0.8rem;
+  color: #333;
+  pointer-events: none;
+}
+
+/* Responsive Dropdown Styling */
+@media (max-width: 600px) {
+  .unit-select-header {
+    font-size: 0.8rem;
+    padding: 8px;
+  }
+
+  .unit-select-dropdown select {
+    font-size: 0.8rem;
+    padding: 8px;
+  }
+}
+
+/* General Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Modal Container */
+.modal-container {
+  background-color: #fff;
+  padding: 20px 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.modal-container h3 {
+  font-size: 1.6rem;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.modal-container p {
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+/* Input Fields in Modal */
+.modal-container .input {
+  width: 100%;
+  padding: 10px 15px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  transition: border-color 0.2s ease;
+}
+
+.modal-container .input:focus {
+  border-color: #666;
+  outline: none;
+}
+
+/* Modal Buttons */
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.cancel-btn,
+.submit-btn {
+  flex: 1;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.cancel-btn {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.submit-btn {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.cancel-btn:hover {
+  background-color: #d6d6d6;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+
+/* required-asterisk*/
+.required-asterisk{
+  color: red;
+}
+
+
+.tooltip-wrapper {
+  position: relative;
+  display: inline-block;
+  cursor: help;
+  margin-left: 4px;
+  font-size: 12px;
+  color: #999;
+}
+
+.tooltip-text {
+  visibility: hidden;
+  width: max-content;
+  background-color: #333;
+  color: #fff;
+  text-align: left;
+  border-radius: 4px;
+  padding: 4px 8px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%; /* above the icon */
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 11px;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.tooltip-wrapper:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+
+/* Template Selection Styles */
+.template-selection {
+  margin-bottom: 20px;
+}
+
+.template-selection label {
+  font-size: 16px;
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+.template-selection select {
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  width: 200px;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.template-selection select:hover {
+  border-color: #007bff;
+}
+
+.template-selection select:focus {
+  border-color: #0056b3;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}

@@ -1,0 +1,150 @@
+/* General Layout Improvements */
+.data-upload-container {
+    padding: 30px;
+    max-width: 2100px;
+    margin: auto;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+/* File Input Section */
+.data-upload-file-section {
+    margin-bottom: 20px;
+}
+
+.data-upload-file-input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+
+/* Table Layout */
+.data-upload-table-section {
+    margin-top: 20px;
+}
+
+.data-upload-table-wrapper {
+    max-height: 400px;
+    overflow-y: auto;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+}
+
+.data-upload-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-upload-th,
+.data-upload-td {
+    padding: 14px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.data-upload-thead {
+    background-color: #f4f4f4;
+    font-weight: 500;
+}
+
+/* Button and Modal */
+.data-upload-submit-btn-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.data-upload-submit-btn {
+    padding: 14px 28px;
+    background-color: #1976d2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.data-upload-submit-btn:hover {
+    background-color: #125ea7;
+}
+
+/* Modal */
+.data-upload-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.data-upload-modal-container {
+    background-color: #ffffff;
+    padding: 35px;
+    border-radius: 12px;
+    width: 450px;
+    max-width: 90%;
+}
+
+.data-upload-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.data-upload-input {
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.data-upload-input:focus {
+    border-color: #1976d2;
+}
+
+.data-upload-modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+.data-upload-cancel-btn,
+.data-upload-submit-btn {
+    padding: 12px 25px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.data-upload-cancel-btn {
+    background-color: #aaa;
+    color: white;
+    border-radius: 8px;
+}
+
+.data-upload-cancel-btn:hover {
+    background-color: #888;
+}
+
+.data-upload-submit-btn {
+    background-color: #1976d2;
+    color: white;
+    border-radius: 8px;
+}
+
+.data-upload-submit-btn:hover {
+    background-color: #125ea7;
+}
+

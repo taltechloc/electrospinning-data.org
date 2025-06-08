@@ -1,0 +1,41 @@
+/* layout.css */
+.layout-container {
+  font-family: 'Arial', sans-serif;
+  background-color: #f8f9fa; /* Light gray background for the entire page */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure the layout takes up the full height of the page */
+}
+
+.content-container {
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  max-width: 2400px; /* Max width for content */
+  flex-grow: 1; /* Ensure content area grows to fill available space */
+}
+
+h1, h2, h3 {
+  color: #333333;
+  font-weight: bold;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Add custom hover effects for links */
+.navbar-nav .nav-item .nav-link:hover {
+  color: #00008B; /* Golden color when hovering over links */
+}
+
+.navbar-toggler-icon {
+  background-color: #fff; /* Make the toggler icon white */
+}
+
+/* Layout.css */
+.custom-nav-left {
+  margin-left: 20px; /* Adjust this value as needed */
+}

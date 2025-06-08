@@ -1,0 +1,145 @@
+/* home.css */
+
+/* Hero Section with Classic Blue Gradient */
+.hero-section {
+  background: linear-gradient(to right, #003366, #005b99); /* Classic blue gradient */
+  padding: 60px 20px;
+  text-align: center;
+  color: white;
+}
+
+.hero-section img {
+  border-radius: 15px 50px 30px;
+  
+}
+
+.hero-heading {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.hero-subheading {
+  font-size: 1.25rem;
+}
+
+.hero-cta-btn {
+  font-size: 1.25rem;
+  padding: 12px 30px;
+  border-radius: 30px;
+  border: 2px solid white;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.hero-cta-btn:hover {
+  background-color: white;
+  color: #005b99;
+  border-color: #005b99;
+}
+
+/* AboutPage Section */
+.about-section {
+  background-color: #f4f4f9; /* Light background for contrast */
+  padding: 40px 20px;
+  color: #333;
+}
+
+.section-heading {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.about-text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Features Section */
+.features-section {
+  background: linear-gradient(135deg, #1f6f94, #5b8e9f); /* Softer, complementary blue gradient */
+  color: black; /* Set text color to black */
+  padding: 60px 20px;
+}
+
+.features-section .row {
+  justify-content: center;
+}
+
+.feature-box {
+  background: gainsboro; 
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.feature-box:hover {
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.4);
+  transform: translateY(-5px); /* Slight lifting effect */
+}
+
+.feature-box h4 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: black; /* Ensure header text is black */
+}
+
+.feature-box p {
+  font-size: 1rem;
+  color: black; /* Ensure paragraph text is black */
+}
+
+/* Call to Action Section */
+.cta-section {
+  background-color: black; /* Soft off-white background for readability */
+  padding: 60px 20px;
+}
+
+.cta-heading {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.cta-text {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+}
+
+/* Footer */
+.footer {
+  background-color: #343a40;
+  color: white;
+  padding: 20px 0;
+  margin-top: 40px;
+}
+
+.footer p {
+  margin: 0;
+}
+
+/* Hover Effects for Buttons */
+.btn-primary {
+  background-color: #007bff; /* Lively blue button */
+  border-color: #007bff;
+  color: white; /* White text on the primary button */
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  border-color: #0056b3;
+  color: white; /* Keep the text white on hover */
+}
+
+.btn-outline-light {
+  border-color: #007bff; /* Blue outline */
+  color: #007bff; /* Blue text */
+  background-color: transparent; /* No background initially */
+  transition: color 0.3s, background-color 0.3s, border-color 0.3s;
+}
+
+.btn-outline-light:hover {
+  background-color: #007bff; /* Blue background on hover */
+  color: white; /* White text on hover */
+  border-color: #0056b3; /* Darker blue border on hover */
+}
