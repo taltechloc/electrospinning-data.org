@@ -10,3 +10,9 @@ export function submitFeedback(feedback) {
         body: JSON.stringify(feedback),
     });
 }
+
+export function getAllFeedback() {
+    return apiRequest(endpoints.GetAllFeedback, {
+        method: 'GET',
+    });
+}

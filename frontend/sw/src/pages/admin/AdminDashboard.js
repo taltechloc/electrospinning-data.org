@@ -61,7 +61,18 @@ const AdminDashboard = () => {
                                 Pending Submissions
                             </Link>
                         </li>
+                        <li>
+                            <Link
+                                to="/admin/feedback"
+                                style={styles.navLink}
+                                onMouseOver={(e) => (e.target.style.backgroundColor = '#1abc9c')}
+                                onMouseOut={(e) => (e.target.style.backgroundColor = 'transparent')}
+                            >
+                                View Feedback
+                            </Link>
+                        </li>
                     </ul>
+
                 </nav>
 
 

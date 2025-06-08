@@ -1,7 +1,8 @@
 // src/api/endpoints.js
 
-// const BASE_URL =  'http://localhost:8080/api';
-const BASE_URL = "/api"
+const BASE_URL =  'http://localhost:8080/api';
+// const BASE_URL = "/api"
+
 export const endpoints = {
     submitData: `${BASE_URL}/data/submit`,
     pendingSubmissions: `${BASE_URL}/moderation/pending_submissions`,
@@ -9,5 +10,11 @@ export const endpoints = {
     downloadExcel: `${BASE_URL}/cache/download/excel`,
     AllDatasetJson: `${BASE_URL}/cache/download/json`,
     AdminLogin: `${BASE_URL}/admin/login`,
-    ListContributors: `${BASE_URL}/contributors/list`
+    ListContributors: `${BASE_URL}/contributors/list`,
+    RefreshContributorsCache: `${BASE_URL}/contributors/cache/refresh`,
+    RefreshDatasetCache: `${BASE_URL}/export/cache/refresh-cache`,
+    SubmitFeedback: `${BASE_URL}/feedback/submit`,
+    GetAllFeedback: `${BASE_URL}/feedback/all`
+
+
 };

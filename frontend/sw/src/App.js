@@ -19,6 +19,8 @@ import ContactAndFeedbackPage from "./pages/ContactAndFeedbackPage";
 import FeedbackPage from "./pages/FeedbackPage";
 import PreviewDatasetPage from "./components/preview/DatasetPreviewPage";
 import Moderation from "./components/moderation/Moderation";
+import FeedbackListPage from './pages/admin/FeedbackListPage'; // adjust path as needed
+
 
 import Login from './pages/admin/Login';
 
@@ -42,6 +44,7 @@ const App = () => {
           <Route path="/previewDatasetPage" element={<PreviewDatasetPage />} />
           <Route path="/moderationPage" element={<Moderation />} />
           <Route path="/contactAndFeedbackPage" element={<Layout><ContactAndFeedbackPage /></Layout>} />
+          <Route path="/admin/feedback" element={<FeedbackListPage />} />
         </Routes>
       </Router>
     </AuthProvider>
