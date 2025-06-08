@@ -1,6 +1,6 @@
 // src/api/endpoints.js
 
-const BASE_URL = '/api';
+const BASE_URL =  'http://localhost:8080/api';
 
 export const endpoints = {
     submitData: `${BASE_URL}/data/submit`,
