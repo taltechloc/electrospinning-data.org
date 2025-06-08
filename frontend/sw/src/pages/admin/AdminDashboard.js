@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import styles from '../../styles/admin/adminDashboardStyles';
+import {refreshContributorsCache, refreshDatasetCache} from "../../services/adminService";
 
 const AdminDashboard = () => {
     const { logout } = useAuth();
@@ -11,6 +12,26 @@ const AdminDashboard = () => {
         logout();
         navigate('/');
     }, [logout, navigate]);
+
+    const handleRefreshDatasetCache = async () => {
+        try {
+            const message = await refreshDatasetCache();
+            alert(`Success: ${message}`);
+        } catch (error) {
+            alert(`Failed to refresh contributors cache.\n${error.message}`);
+            console.error('Refresh failed:', error);
+        }
+    };
+
+    const handleRefreshContributorsCache = async () => {
+        try {
+            const message = await refreshContributorsCache();
+            alert(`Success: ${message}`);
+        } catch (error) {
+            alert(`Failed to refresh contributors cache.\n${error.message}`);
+            console.error('Refresh failed:', error);
+        }
+    };
 
     return (
         <div style={styles.container}>
@@ -43,9 +64,25 @@ const AdminDashboard = () => {
                     </ul>
                 </nav>
 
+
                 <main style={styles.main} role="main">
                     <h2 style={styles.sectionTitle}>Welcome to the Admin Dashboard</h2>
                     <p style={styles.paragraph}>Select an option from the sidebar to get started.</p>
+
+                    <div style={{ marginTop: '2rem' }}>
+                        <button
+                            style={{ ...styles.logoutBtn, marginRight: '1rem' }}
+                            onClick={handleRefreshDatasetCache}
+                        >
+                            Refresh Dataset Cache
+                        </button>
+                        <button
+                            style={styles.logoutBtn}
+                            onClick={handleRefreshContributorsCache}
+                        >
+                            Refresh Contributors Cache
+                        </button>
+                    </div>
                 </main>
             </div>
         </div>
