@@ -1,3 +1,4 @@
-install_on_sever.sh
+install_on_server.sh
 transfer_to_server.sh
 dev_build_and_run.sh
+prod_build.sh
