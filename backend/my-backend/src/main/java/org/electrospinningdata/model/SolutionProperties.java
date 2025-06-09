@@ -1,55 +1,83 @@
 package org.electrospinningdata.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "solution_properties")
 public class SolutionProperties {
 
+    @Setter
+    @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "solution_property_id")
     private Long solutionPropertyId;
 
+    @Setter
+    @Getter
     @ManyToOne
     @JoinColumn(name = "experiment_id", nullable = false)
     private Experiments experiment;
 
+    @Setter
+    @Getter
     @Column(name = "concentration")
     private Double concentration;
 
+    @Setter
+    @Getter
     @ManyToOne
     @JoinColumn(name = "concentration_unit_id")
     private Unit concentrationUnit;
 
+    @Setter
+    @Getter
     @Column(name = "viscosity")
     private Double viscosity;
 
+    @Setter
+    @Getter
     @ManyToOne
     @JoinColumn(name = "viscosity_unit_id")
     private Unit viscosityUnit;
 
+    @Setter
+    @Getter
     @Column(name = "surface_tension")
     private Double surfaceTension;
 
+    @Setter
+    @Getter
     @ManyToOne
     @JoinColumn(name = "surface_tension_unit_id")
     private Unit surfaceTensionUnit;
 
+    @Setter
+    @Getter
     @Column(name = "conductivity")
     private Double conductivity;
 
+    @Setter
+    @Getter
     @ManyToOne
     @JoinColumn(name = "conductivity_unit_id")
     private Unit conductivityUnit;
 
+    @Setter
+    @Getter
     @Column(name = "evaporation_rate")
     private Double evaporationRate;
 
+    @Setter
+    @Getter
     @ManyToOne
     @JoinColumn(name = "evaporation_rate_unit_id")
     private Unit evaporationRateUnit;
 
+    @Setter
+    @Getter
     @Column(name = "pH")
     private Double pH;
 
@@ -70,110 +98,6 @@ public class SolutionProperties {
         this.conductivityUnit = conductivityUnit;
         this.evaporationRate = evaporationRate;
         this.evaporationRateUnit = evaporationRateUnit;
-        this.pH = pH;
-    }
-
-    public Long getSolutionPropertyId() {
-        return solutionPropertyId;
-    }
-
-    public void setSolutionPropertyId(Long solutionPropertyId) {
-        this.solutionPropertyId = solutionPropertyId;
-    }
-
-    public Experiments getExperiment() {
-        return experiment;
-    }
-
-    public void setExperiment(Experiments experiment) {
-        this.experiment = experiment;
-    }
-
-    public Double getConcentration() {
-        return concentration;
-    }
-
-    public void setConcentration(Double concentration) {
-        this.concentration = concentration;
-    }
-
-    public Unit getConcentrationUnit() {
-        return concentrationUnit;
-    }
-
-    public void setConcentrationUnit(Unit concentrationUnit) {
-        this.concentrationUnit = concentrationUnit;
-    }
-
-    public Double getViscosity() {
-        return viscosity;
-    }
-
-    public void setViscosity(Double viscosity) {
-        this.viscosity = viscosity;
-    }
-
-    public Unit getViscosityUnit() {
-        return viscosityUnit;
-    }
-
-    public void setViscosityUnit(Unit viscosityUnit) {
-        this.viscosityUnit = viscosityUnit;
-    }
-
-    public Double getSurfaceTension() {
-        return surfaceTension;
-    }
-
-    public void setSurfaceTension(Double surfaceTension) {
-        this.surfaceTension = surfaceTension;
-    }
-
-    public Unit getSurfaceTensionUnit() {
-        return surfaceTensionUnit;
-    }
-
-    public void setSurfaceTensionUnit(Unit surfaceTensionUnit) {
-        this.surfaceTensionUnit = surfaceTensionUnit;
-    }
-
-    public Double getConductivity() {
-        return conductivity;
-    }
-
-    public void setConductivity(Double conductivity) {
-        this.conductivity = conductivity;
-    }
-
-    public Unit getConductivityUnit() {
-        return conductivityUnit;
-    }
-
-    public void setConductivityUnit(Unit conductivityUnit) {
-        this.conductivityUnit = conductivityUnit;
-    }
-
-    public Double getEvaporationRate() {
-        return evaporationRate;
-    }
-
-    public void setEvaporationRate(Double evaporationRate) {
-        this.evaporationRate = evaporationRate;
-    }
-
-    public Unit getEvaporationRateUnit() {
-        return evaporationRateUnit;
-    }
-
-    public void setEvaporationRateUnit(Unit evaporationRateUnit) {
-        this.evaporationRateUnit = evaporationRateUnit;
-    }
-
-    public Double getPH() {
-        return pH;
-    }
-
-    public void setPH(Double pH) {
         this.pH = pH;
     }
 }

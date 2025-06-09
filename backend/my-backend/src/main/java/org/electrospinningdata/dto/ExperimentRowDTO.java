@@ -1,43 +1,22 @@
 package org.electrospinningdata.dto;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.List;
 import java.util.Map;
 
 public class ExperimentRowDTO {
+    @Setter
+    @Getter
     private Long experimentId;
+    @Setter
+    @Getter
     private String experimentName;
+    @Setter
+    @Getter
     private Map<String, Object> processParameters;
-    private List<NeedlePropertyDTO> needleProperties;  // renamed and type changed
-
-    public Long getExperimentId() {
-        return experimentId;
-    }
-
-    public void setExperimentId(Long experimentId) {
-        this.experimentId = experimentId;
-    }
-
-    public String getExperimentName() {
-        return experimentName;
-    }
-
-    public void setExperimentName(String experimentName) {
-        this.experimentName = experimentName;
-    }
-
-    public Map<String, Object> getProcessParameters() {
-        return processParameters;
-    }
-
-    public void setProcessParameters(Map<String, Object> processParameters) {
-        this.processParameters = processParameters;
-    }
-
-    public List<NeedlePropertyDTO> getNeedleProperties() {
-        return needleProperties;
-    }
-
-    public void setNeedleProperties(List<NeedlePropertyDTO> needleProperties) {
-        this.needleProperties = needleProperties;
-    }
+    @Setter
+    @Getter
+    private List<NeedlePropertyDTO> needleProperties;
 }

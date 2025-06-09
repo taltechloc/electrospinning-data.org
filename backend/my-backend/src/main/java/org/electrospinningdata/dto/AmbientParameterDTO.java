@@ -1,41 +1,20 @@
 package org.electrospinningdata.dto;
 
+import lombok.Getter;
+import lombok.Setter;
+
 public class AmbientParameterDTO {
+    @Setter
+    @Getter
     private Double temperature;
+    @Setter
+    @Getter
     private String temperatureUnit;
+    @Setter
+    @Getter
     private Double humidity;
+    @Setter
+    @Getter
     private String humidityUnit;
 
-    // Getters and Setters
-    public Double getTemperature() {
-        return temperature;
-    }
-
-    public void setTemperature(Double temperature) {
-        this.temperature = temperature;
-    }
-
-    public String getTemperatureUnit() {
-        return temperatureUnit;
-    }
-
-    public void setTemperatureUnit(String temperatureUnit) {
-        this.temperatureUnit = temperatureUnit;
-    }
-
-    public Double getHumidity() {
-        return humidity;
-    }
-
-    public void setHumidity(Double humidity) {
-        this.humidity = humidity;
-    }
-
-    public String getHumidityUnit() {
-        return humidityUnit;
-    }
-
-    public void setHumidityUnit(String humidityUnit) {
-        this.humidityUnit = humidityUnit;
-    }
 }

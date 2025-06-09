@@ -1,45 +1,21 @@
 package org.electrospinningdata.dto;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.Map;
 
 public class NeedlePropertyDTO {
-
+    @Setter
+    @Getter
     private Long needlePropertyId;
+    @Setter
+    @Getter
     private Long experimentId;
+    @Setter
+    @Getter
     private String needleType;
-
+    @Setter
+    @Getter
     private Map<String, Object> needleDefinition;
-    // Getters and setters
-
-    public Long getNeedlePropertyId() {
-        return needlePropertyId;
-    }
-
-    public void setNeedlePropertyId(Long needlePropertyId) {
-        this.needlePropertyId = needlePropertyId;
-    }
-
-    public Long getExperimentId() {
-        return experimentId;
-    }
-
-    public void setExperimentId(Long experimentId) {
-        this.experimentId = experimentId;
-    }
-
-    public String getNeedleType() {
-        return needleType;
-    }
-
-    public void setNeedleType(String needleType) {
-        this.needleType = needleType;
-    }
-
-    public Map<String, Object> getNeedleDefinition() {
-        return needleDefinition;
-    }
-
-    public void setNeedleDefinition(Map<String, Object> needleDefinition) {
-        this.needleDefinition = needleDefinition;
-    }
 }

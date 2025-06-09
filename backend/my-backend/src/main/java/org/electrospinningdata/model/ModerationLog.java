@@ -1,31 +1,44 @@
 package org.electrospinningdata.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 public class ModerationLog {
 
+    @Setter
+    @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "log_id")
     private int logId;
 
+    @Setter
+    @Getter
     @ManyToOne
     @JoinColumn(name = "submission_id", referencedColumnName = "submission_id")
     private DataSubmission dataSubmission;
 
+    @Setter
+    @Getter
     @ManyToOne
     @JoinColumn(name = "moderator_id", referencedColumnName = "user_id")
     private UserInfo moderator;
 
+    @Setter
+    @Getter
     @Enumerated(EnumType.STRING)
     private Action action;
 
+    @Setter
+    @Getter
     @Column(name = "action_timestamp")
     private String actionTimestamp;
 
+    @Setter
+    @Getter
     private String comment;
-
     public ModerationLog() {
         this.actionTimestamp = java.time.LocalDateTime.now().toString();
     }
@@ -34,54 +47,5 @@ public class ModerationLog {
         APPROVED,
         REJECTED,
         FLAGGED
-    }
-
-    // Getters and Setters
-    public int getLogId() {
-        return logId;
-    }
-
-    public void setLogId(int logId) {
-        this.logId = logId;
-    }
-
-    public DataSubmission getDataSubmission() {
-        return dataSubmission;
-    }
-
-    public void setDataSubmission(DataSubmission dataSubmission) {
-        this.dataSubmission = dataSubmission;
-    }
-
-    public UserInfo getModerator() {
-        return moderator;
-    }
-
-    public void setModerator(UserInfo moderator) {
-        this.moderator = moderator;
-    }
-
-    public Action getAction() {
-        return action;
-    }
-
-    public void setAction(Action action) {
-        this.action = action;
-    }
-
-    public String getActionTimestamp() {
-        return actionTimestamp;
-    }
-
-    public void setActionTimestamp(String actionTimestamp) {
-        this.actionTimestamp = actionTimestamp;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
     }
 }

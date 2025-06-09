@@ -183,7 +183,7 @@ public class SubmitDataService {
         }
 
         if (needlePropertyDTO.getNeedleDefinition() != null) {
-            needleProperties.setCollectorDefinition(needlePropertyDTO.getNeedleDefinition());
+            needleProperties.setNeedleDefinition(needlePropertyDTO.getNeedleDefinition());
         }
 
         needlePropertiesRepository.save(needleProperties);

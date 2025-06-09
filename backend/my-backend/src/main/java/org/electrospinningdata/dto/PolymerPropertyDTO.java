@@ -1,16 +1,12 @@
 package org.electrospinningdata.dto;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.List;
 
 public class PolymerPropertyDTO {
+    @Setter
+    @Getter
     private List<PolymerComponentDTO> polymerComponents;
-
-    public List<PolymerComponentDTO> getPolymerComponents() {
-        return polymerComponents;
-    }
-
-    public void setPolymerComponents(List<PolymerComponentDTO> polymerComponents) {
-        this.polymerComponents = polymerComponents;
-    }
-
 }

@@ -1,24 +1,15 @@
 package org.electrospinningdata.dto;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.List;
 
 public class SubmitDataDTO {
+    @Setter
+    @Getter
     private UserMetadataDTO userMetadata;
+    @Setter
+    @Getter
     private List<ExperimentDataDTO> experimentData;  // Changed to List
-
-    public UserMetadataDTO getUserMetadata() {
-        return userMetadata;
-    }
-
-    public void setUserMetadata(UserMetadataDTO userMetadata) {
-        this.userMetadata = userMetadata;
-    }
-
-    public List<ExperimentDataDTO> getExperimentData() {
-        return experimentData;
-    }
-
-    public void setExperimentData(List<ExperimentDataDTO> experimentData) {
-        this.experimentData = experimentData;
-    }
 }

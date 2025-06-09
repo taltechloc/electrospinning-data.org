@@ -1,6 +1,8 @@
 package org.electrospinningdata.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
@@ -15,13 +17,19 @@ public class CollectorProperty {
     @Column(name = "collector_id")
     private Long collectorId;
 
+    @Setter
+    @Getter
     @ManyToOne
     @JoinColumn(name = "experiment_id", nullable = false)
     private Experiments experiment;
 
+    @Setter
+    @Getter
     @Column(name = "collector_type")
     private String collectorType;
 
+    @Setter
+    @Getter
     @JdbcTypeCode(SqlTypes.JSON)
     @Column(name = "collector_definition", columnDefinition = "json")
     private Map<String, Object> collectorDefinition;
@@ -30,27 +38,4 @@ public class CollectorProperty {
     public CollectorProperty() {}
 
 
-    public Experiments getExperiment() {
-        return experiment;
-    }
-
-    public void setExperiment(Experiments experiment) {
-        this.experiment = experiment;
-    }
-
-    public String getCollectorType() {
-        return collectorType;
-    }
-
-    public void setCollectorType(String collectorType) {
-        this.collectorType = collectorType;
-    }
-
-    public Map<String, Object> getCollectorDefinition() {
-        return collectorDefinition;
-    }
-
-    public void setCollectorDefinition(Map<String, Object> collectorDefinition) {
-        this.collectorDefinition = collectorDefinition;
-    }
 }

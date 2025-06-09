@@ -1,97 +1,44 @@
 package org.electrospinningdata.dto;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.List;
 
 public class ExperimentDataDTO {
+    @Setter
+    @Getter
     private Integer experimentId;
+    @Setter
+    @Getter
     private PolymerPropertyDTO polymerProperty;
+    @Setter
+    @Getter
     private NeedlePropertyDTO needleProperty;
+    @Setter
+    @Getter
     private SolventPropertyDTO solventProperty;
+    @Setter
+    @Getter
     private FiberPropertyDTO fiberProperty;
+    @Setter
+    @Getter
     private SolutionPropertyDTO solutionProperty;
+    @Setter
+    @Getter
     private AmbientParameterDTO ambientParameter;
+    @Setter
+    @Getter
     private ProcessParameterDTO processParameter;
+    @Setter
+    @Getter
     private CollectorPropertyDTO collectorProperty;
+    @Setter
+    @Getter
     private List<FiberImagesDTO> fiberImages;
+    @Setter
+    @Getter
+    private String Doi;
 
 
-    public Integer getExperimentId() {
-        return experimentId;
-    }
-
-    public void setExperimentId(Integer experimentId) {
-        this.experimentId = experimentId;
-    }
-
-    public PolymerPropertyDTO getPolymerProperty() {
-        return polymerProperty;
-    }
-
-    public void setPolymerProperty(PolymerPropertyDTO polymerProperties) {
-        this.polymerProperty = polymerProperties;
-    }
-
-    public NeedlePropertyDTO getNeedleProperty() {
-        return needleProperty;
-    }
-
-    public void setNeedleProperty(NeedlePropertyDTO needleProperties) {
-        this.needleProperty = needleProperties;
-    }
-
-    public SolventPropertyDTO getSolventProperty() {
-        return solventProperty;
-    }
-
-    public void setSolventProperty(SolventPropertyDTO solventProperties) {
-        this.solventProperty = solventProperties;
-    }
-
-    public FiberPropertyDTO getFiberProperty() {
-        return fiberProperty;
-    }
-
-    public void setFiberProperty(FiberPropertyDTO fiberProperties) {
-        this.fiberProperty = fiberProperties;
-    }
-
-    public SolutionPropertyDTO getSolutionProperty() {
-        return solutionProperty;
-    }
-
-    public void setSolutionProperty(SolutionPropertyDTO solutionProperties) {
-        this.solutionProperty = solutionProperties;
-    }
-
-    public AmbientParameterDTO getAmbientParameter() {
-        return ambientParameter;
-    }
-
-    public void setAmbientParameter(AmbientParameterDTO ambientParameters) {
-        this.ambientParameter = ambientParameters;
-    }
-
-    public ProcessParameterDTO getProcessParameter() {
-        return processParameter;
-    }
-
-    public void setProcessParameter(ProcessParameterDTO processParameters) {
-        this.processParameter = processParameters;
-    }
-
-
-    public CollectorPropertyDTO getCollectorProperty() {
-        return collectorProperty;
-    }
-
-    public void setCollectorProperty(CollectorPropertyDTO collectorProperty) {
-        this.collectorProperty = collectorProperty;
-    }
-    public List<FiberImagesDTO> getFiberImages() {
-        return fiberImages;
-    }
-
-    public void setFiberImages(List<FiberImagesDTO> fiberImages) {
-        this.fiberImages = fiberImages;
-    }
 }
