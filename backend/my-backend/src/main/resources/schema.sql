@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS user_info (
     user_id CHAR(36) NOT NULL PRIMARY KEY,
     timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     name VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL UNIQUE,
+    email VARCHAR(255) NOT NULL,
     affiliation VARCHAR(255),
     lab VARCHAR(255),
     country VARCHAR(255),

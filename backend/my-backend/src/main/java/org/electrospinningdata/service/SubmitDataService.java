@@ -106,14 +106,14 @@ public class SubmitDataService {
     private UserInfo createUser(UserMetadataDTO userMetadata) {
         if (userMetadata == null) return null;
 
-        Optional<UserInfo> existingUserOpt = Optional.empty();
-        if (userMetadata.getEmail() != null) {
-            existingUserOpt = userRepository.findByEmail(userMetadata.getEmail());
-        }
-
-        if (existingUserOpt.isPresent()) {
-            return existingUserOpt.get();
-        }
+//        Optional<UserInfo> existingUserOpt = Optional.empty();
+//        if (userMetadata.getEmail() != null) {
+//            existingUserOpt = userRepository.findByEmail(userMetadata.getEmail());
+//        }
+//
+//        if (existingUserOpt.isPresent()) {
+//            return existingUserOpt.get();
+//        }
 
         String userId = UUID.randomUUID().toString();
 
