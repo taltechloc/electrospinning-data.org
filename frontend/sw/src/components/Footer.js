@@ -23,7 +23,7 @@ const Footer = () => {
                     <a href="https://github.com/taltechloc/electrospinning-data.org" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
                         <i className="fab fa-github"></i>
                     </a>
-                    <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.linkedin.com/company/lab-on-a-chip/" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
                         <i className="fab fa-linkedin"></i>
                     </a>
                 </div>
