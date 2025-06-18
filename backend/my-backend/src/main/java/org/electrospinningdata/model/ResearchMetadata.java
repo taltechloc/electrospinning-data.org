@@ -38,6 +38,6 @@ public class ResearchMetadata {
 
     @Column(name = "custom_device")
     @Setter @Getter
-    private Boolean customDevice;
+    private String customDevice;
 
 }

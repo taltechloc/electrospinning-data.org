@@ -25,6 +25,6 @@ public class ResearchMetadataDTO {
     private String deviceModel;
 
     @Setter @Getter
-    private Boolean customDevice;
+    private String customDevice;
 
 }

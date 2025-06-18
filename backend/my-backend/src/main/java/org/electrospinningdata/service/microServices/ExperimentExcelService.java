@@ -114,7 +114,7 @@ public class ExperimentExcelService {
             setJsonCell(row, 38, safeValue(dto.getFiberProperty(), FiberPropertyDTO::getFiberMorphology));
 
             setStringCell(row, 39, dto.getResearchMetadata().getPublicationTitle());
-            setBooleanCell(row, 40, dto.getResearchMetadata().getCustomDevice());
+            setStringCell(row, 40, dto.getResearchMetadata().getCustomDevice());
             setStringCell(row, 41, dto.getResearchMetadata().getDeviceManufacturer());
             setStringCell(row, 42, dto.getResearchMetadata().getDeviceModel());
         }
