@@ -69,20 +69,6 @@ const ContributorsPage = () => {
                                             </div>
                                         )}
 
-                                        {contributor.doi && (
-                                            <div style={{ marginTop: '0.25rem' }}>
-                                                DOI:{' '}
-                                                <a
-                                                    href={`https://doi.org/${contributor.doi}`}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    style={styles.link}
-                                                >
-                                                    {contributor.doi}
-                                                </a>
-                                            </div>
-                                        )}
-
                                         {/* Optional collapsible details for device info */}
                                         {(contributor.deviceManufacturer || contributor.deviceModel || typeof contributor.customDevice === 'boolean') && (
                                             <details style={{ marginTop: '0.5rem', fontSize: '0.85rem', color: '#666' }}>
