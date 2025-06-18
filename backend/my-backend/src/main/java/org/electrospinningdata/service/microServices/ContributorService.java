@@ -41,8 +41,6 @@ public class ContributorService {
                     dto.setCountry(userInfo.getCountry());
                     dto.setLab(userInfo.getLab());
                     dto.setOrcid(userInfo.getOrcid());
-
-
                     contributors.add(dto);
                 }
             });
