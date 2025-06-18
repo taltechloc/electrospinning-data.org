@@ -106,15 +106,23 @@ public class SubmitDataService {
     private UserInfo createUser(UserMetadataDTO userMetadata) {
         if (userMetadata == null) return null;
 
-//        Optional<UserInfo> existingUserOpt = Optional.empty();
-//        if (userMetadata.getEmail() != null) {
-//            existingUserOpt = userRepository.findByEmail(userMetadata.getEmail());
-//        }
-//
-//        if (existingUserOpt.isPresent()) {
-//            return existingUserOpt.get();
-//        }
+        // Check if user with the same email exists
+        Optional<UserInfo> existingUserByEmail = Optional.empty();
+        if (userMetadata.getEmail() != null) {
+            existingUserByEmail = userRepository.findByEmail(userMetadata.getEmail());
+            if (existingUserByEmail.isPresent()) {
+                return existingUserByEmail.get();
+            }
+        }
 
+        // Check if user with the same name exists
+        Optional<UserInfo> existingUser = userRepository.findByEmailOrName(userMetadata.getEmail(), userMetadata.getName());
+        if (existingUser.isPresent()) {
+            return existingUser.get();
+        }
+
+
+        // No existing user found, create new
         String userId = UUID.randomUUID().toString();
 
         UserInfo userInfo = new UserInfo();
@@ -136,6 +144,7 @@ public class SubmitDataService {
         userRepository.save(userInfo);
         return userInfo;
     }
+
 
     private Experiments createExperiment(String userId, ExperimentDataDTO experimentData) {
         if (experimentData == null) return null;
