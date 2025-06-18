@@ -49,7 +49,7 @@ public class DataRetrievalService {
 
             ExperimentDataDTO experimentDataDTO = new ExperimentDataDTO();
             experimentDataDTO.setExperimentId(experiment.getExperimentId());
-            experimentDataDTO.setDoi(Objects.requireNonNull(getResearchMetadataDTO(experiment)).getDoi());
+            experimentDataDTO.setResearchMetadata(getResearchMetadataDTO(experiment));
             experimentDataDTO.setPolymerProperty(getPolymerPropertyDTO(experiment));
             experimentDataDTO.setSolventProperty(getSolventPropertyDTO(experiment));
             experimentDataDTO.setSolutionProperty(getSolutionPropertyDTO(experiment));
@@ -97,7 +97,12 @@ public class DataRetrievalService {
         if (researchMetadata == null) return null;
 
         ResearchMetadataDTO dto = new ResearchMetadataDTO();
+        dto.setPublicationTitle(researchMetadata.getPublicationTitle());
         dto.setDoi(researchMetadata.getDoi());
+        dto.setCustomDevice(researchMetadata.getCustomDevice());
+        dto.setDeviceManufacturer(researchMetadata.getDeviceManufacturer());
+        dto.setDeviceModel(researchMetadata.getDeviceModel());
+
         return dto;
     }
 

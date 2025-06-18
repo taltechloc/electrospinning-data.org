@@ -38,7 +38,7 @@ public class ExperimentDataDTO {
     private List<FiberImagesDTO> fiberImages;
     @Setter
     @Getter
-    private String Doi;
+    private ResearchMetadataDTO researchMetadata;
 
 
 }
