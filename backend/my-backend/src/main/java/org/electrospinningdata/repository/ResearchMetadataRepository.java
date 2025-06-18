@@ -9,5 +9,7 @@ import java.util.Optional;
 @Repository
 public interface ResearchMetadataRepository extends JpaRepository<ResearchMetadata, Long> {
     Optional<ResearchMetadata> findByDoiOrPublicationTitle(String doi, String publicationTitle);
+    ResearchMetadata findByResearchId(Integer researchId);
+
 
 }

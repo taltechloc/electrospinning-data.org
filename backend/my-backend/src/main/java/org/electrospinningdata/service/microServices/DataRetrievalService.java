@@ -6,10 +6,7 @@ import org.electrospinningdata.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Base64;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 
 @Service
@@ -37,6 +34,8 @@ public class DataRetrievalService {
     private FiberMorphologyRepository fiberMorphologyRepository;
     @Autowired
     private FiberImagesRepository fiberImagesRepository;
+    @Autowired
+    private ResearchMetadataRepository researchMetadataRepository;
 
     public List<ExperimentDataDTO> getDataByExperimentIds(List<Integer> experimentIds) {
         List<ExperimentDataDTO> results = new ArrayList<>();
@@ -50,7 +49,7 @@ public class DataRetrievalService {
 
             ExperimentDataDTO experimentDataDTO = new ExperimentDataDTO();
             experimentDataDTO.setExperimentId(experiment.getExperimentId());
-
+            experimentDataDTO.setDoi(Objects.requireNonNull(getResearchMetadataDTO(experiment)).getDoi());
             experimentDataDTO.setPolymerProperty(getPolymerPropertyDTO(experiment));
             experimentDataDTO.setSolventProperty(getSolventPropertyDTO(experiment));
             experimentDataDTO.setSolutionProperty(getSolutionPropertyDTO(experiment));
@@ -65,6 +64,7 @@ public class DataRetrievalService {
         }
         return results;
     }
+
 
     private void addFiberImagesToDTO(Experiments experiment, ExperimentDataDTO experimentDataDTO) {
         if (experiment == null || experimentDataDTO == null) return;
@@ -89,6 +89,16 @@ public class DataRetrievalService {
         }
 
         experimentDataDTO.setFiberImages(fiberImagesDTOs);
+    }
+
+
+    private ResearchMetadataDTO getResearchMetadataDTO(Experiments experiment) {
+        ResearchMetadata researchMetadata = researchMetadataRepository.findByResearchId(experiment.getResearchId());
+        if (researchMetadata == null) return null;
+
+        ResearchMetadataDTO dto = new ResearchMetadataDTO();
+        dto.setDoi(researchMetadata.getDoi());
+        return dto;
     }
 
     private NeedlePropertyDTO getNeedlePropertyDTO(Experiments experiment) {

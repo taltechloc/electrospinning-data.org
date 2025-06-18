@@ -23,7 +23,7 @@ public class ExperimentExcelService {
         Sheet sheet = workbook.createSheet("Experiments");
 
         String[] columns = {
-                "experiment_id", "is_polymer_blend", "polymer(s)", "polymer_components",
+                "doi", "experiment_id", "is_polymer_blend", "polymer(s)", "polymer_components",
                 "is_solvent_blend", "solvent(s)", "solvent_components",
                 "solution_concentration", "solution_viscosity", "solution_surface_tension",
                 "solution_conductivity", "solution_evaporation_rate",
@@ -43,29 +43,31 @@ public class ExperimentExcelService {
         for (ExperimentDataDTO dto : dataList) {
             Row row = sheet.createRow(rowNum++);
 
-            setNumericCell(row, 0, dto.getExperimentId());
+            setStringCell(row, 0, dto.getDoi()); // DOI in column 0
+            setNumericCell(row, 1, dto.getExperimentId());
+
 
             // Polymer blend
             List<PolymerComponentDTO> polymers = safeList(dto.getPolymerProperty(), PolymerPropertyDTO::getPolymerComponents);
-            setBooleanCell(row, 1, polymers.size() > 1);
-            setStringCell(row, 2, joinNames(polymers, PolymerComponentDTO::getPolymerName));
-            setJsonCell(row, 3, polymers);
+            setBooleanCell(row, 2, polymers.size() > 1);
+            setStringCell(row, 3, joinNames(polymers, PolymerComponentDTO::getPolymerName));
+            setJsonCell(row, 4, polymers);
 
             // Solvent blend
             List<SolventComponentDTO> solvents = safeList(dto.getSolventProperty(), SolventPropertyDTO::getSolventComponents);
-            setBooleanCell(row, 4, solvents.size() > 1);
-            setStringCell(row, 5, joinNames(solvents, SolventComponentDTO::getSolventName));
-            setJsonCell(row, 6, solvents);
+            setBooleanCell(row, 5, solvents.size() > 1);
+            setStringCell(row, 6, joinNames(solvents, SolventComponentDTO::getSolventName));
+            setJsonCell(row, 7, solvents);
 
             // Solution properties
-            setDoubleCell(row, 7, safeValue(dto.getSolutionProperty(), SolutionPropertyDTO::getConcentration));
-            setDoubleCell(row, 8, safeValue(dto.getSolutionProperty(), SolutionPropertyDTO::getSolutionViscosity));
-            setDoubleCell(row, 9, safeValue(dto.getSolutionProperty(), SolutionPropertyDTO::getSurfaceTension));
-            setDoubleCell(row, 10, safeValue(dto.getSolutionProperty(), SolutionPropertyDTO::getSolutionConductivity));
-            setDoubleCell(row, 11, safeValue(dto.getSolutionProperty(), SolutionPropertyDTO::getEvaporationRate));
+            setDoubleCell(row, 8, safeValue(dto.getSolutionProperty(), SolutionPropertyDTO::getConcentration));
+            setDoubleCell(row, 9, safeValue(dto.getSolutionProperty(), SolutionPropertyDTO::getSolutionViscosity));
+            setDoubleCell(row, 10, safeValue(dto.getSolutionProperty(), SolutionPropertyDTO::getSurfaceTension));
+            setDoubleCell(row, 11, safeValue(dto.getSolutionProperty(), SolutionPropertyDTO::getSolutionConductivity));
+            setDoubleCell(row, 12, safeValue(dto.getSolutionProperty(), SolutionPropertyDTO::getEvaporationRate));
 
             // Needle
-            setStringCell(row, 12, safeValue(dto.getNeedleProperty(), NeedlePropertyDTO::getNeedleType));
+            setStringCell(row, 13, safeValue(dto.getNeedleProperty(), NeedlePropertyDTO::getNeedleType));
 
             // Collector
             setStringCell(row, 14, safeValue(dto.getCollectorProperty(), CollectorPropertyDTO::getCollectorType));
