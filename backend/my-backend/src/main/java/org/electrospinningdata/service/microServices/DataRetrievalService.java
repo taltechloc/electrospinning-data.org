@@ -207,7 +207,16 @@ public class DataRetrievalService {
         dto.setVoltage(processParameter.getVoltage());
         dto.setFlowRate(processParameter.getFlowRate());
         dto.setTipCollectorDistance(processParameter.getTipCollectorDistance());
-        dto.setSpinningDuration(processParameter.getSpinningDuration());
+
+        Double spinningDuration = processParameter.getSpinningDuration();
+        if (spinningDuration != null && spinningDuration == 0) {
+            spinningDuration = null;
+        }
+
+        if (spinningDuration != null) {
+            dto.setSpinningDuration(spinningDuration);
+        }
+
 
         if (processParameter.getVoltageUnit() != null) {
             dto.setVoltageUnit(processParameter.getVoltageUnit().getUnit());
