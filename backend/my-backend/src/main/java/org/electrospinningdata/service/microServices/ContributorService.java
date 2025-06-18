@@ -41,10 +41,7 @@ public class ContributorService {
                     dto.setCountry(userInfo.getCountry());
                     dto.setLab(userInfo.getLab());
                     dto.setOrcid(userInfo.getOrcid());
-                    dto.setDoi(userInfo.getDoi());
-                    dto.setDeviceManufacturer(userInfo.getDeviceManufacturer());
-                    dto.setDeviceModel(userInfo.getDeviceModel());
-                    dto.setCustomDevice(userInfo.getCustomDevice());
+
 
                     contributors.add(dto);
                 }

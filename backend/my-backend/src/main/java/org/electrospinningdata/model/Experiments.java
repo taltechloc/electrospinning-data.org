@@ -26,6 +26,11 @@ public class Experiments {
 
     @Setter
     @Getter
+    @Column(name = "research_id")
+    private Integer researchId;
+
+    @Setter
+    @Getter
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "user_id", insertable = false, updatable = false)
     private UserInfo userInfo;

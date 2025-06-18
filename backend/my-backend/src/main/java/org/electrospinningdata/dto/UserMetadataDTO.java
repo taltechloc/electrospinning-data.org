@@ -27,18 +27,6 @@ public class UserMetadataDTO {
     private String orcid;
     @Setter
     @Getter
-    private String doi;
-    @Setter
-    @Getter
-    private String deviceManufacturer;
-    @Setter
-    @Getter
-    private String deviceModel;
-    @Setter
-    @Getter
-    private Boolean customDevice;
-    @Setter
-    @Getter
     private Boolean showPublicly;
     @Setter
     @Getter

@@ -1,32 +1,33 @@
---DROP TABLE IF EXISTS
---    ambient_parameters,
---    approved_data,
---    contributors,
---    data_file,
---    data_submission,
---    experiments,
---    fiber_properties,
---    moderation_logs,
---    needle_components,
---    needle_properties,
---    polymer_components,
---    polymer_properties,
---    process_parameter,
---    single_needle_contributed,
---    single_needle_dataset,
---    single_needle_rejected,
---    solution_properties,
---    solvent_components,
---    solvent_properties,
---    unit,
---    collector_properties,
---    polymer,
---    solvent,
---    fiber_morphology,
---    morphology,
---    users,
---    fiber_images,
---    user_info;
+DROP TABLE IF EXISTS
+    ambient_parameters,
+    approved_data,
+    contributors,
+    data_file,
+    data_submission,
+    experiments,
+    fiber_properties,
+    moderation_logs,
+    needle_components,
+    needle_properties,
+    polymer_components,
+    polymer_properties,
+    process_parameter,
+    single_needle_contributed,
+    single_needle_dataset,
+    single_needle_rejected,
+    solution_properties,
+    solvent_components,
+    solvent_properties,
+    unit,
+    collector_properties,
+    polymer,
+    solvent,
+    fiber_morphology,
+    morphology,
+    users,
+    fiber_images,
+    research_metadata,
+    user_info;
 
 
 CREATE TABLE IF NOT EXISTS feedback (
@@ -40,21 +41,6 @@ CREATE TABLE IF NOT EXISTS feedback (
 );
 
 
-CREATE TABLE IF NOT EXISTS users (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    email VARCHAR(255) NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    name VARCHAR(255) NOT NULL,
-    role VARCHAR(100),
-    affiliation VARCHAR(255),
-    research_lab VARCHAR(255),
-    orcid VARCHAR(50),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
-
-
-
 CREATE TABLE IF NOT EXISTS user_info (
     user_id CHAR(36) NOT NULL PRIMARY KEY,
     timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -65,12 +51,20 @@ CREATE TABLE IF NOT EXISTS user_info (
     country VARCHAR(255),
     role VARCHAR(255),
     orcid VARCHAR(255),
+    show_publicly BOOLEAN DEFAULT FALSE,
+    consent_terms BOOLEAN DEFAULT FALSE
+);
+
+
+CREATE TABLE IF NOT EXISTS research_metadata (
+    research_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id CHAR(36) NOT NULL,
+    publication_title VARCHAR(255),
     doi VARCHAR(255),
     device_manufacturer VARCHAR(255),
     device_model VARCHAR(255),
     custom_device BOOLEAN,
-    show_publicly BOOLEAN DEFAULT FALSE,
-    consent_terms BOOLEAN DEFAULT FALSE
+    FOREIGN KEY (user_id) REFERENCES user_info(user_id)
 );
 
 CREATE TABLE IF NOT EXISTS experiments (
@@ -79,8 +73,11 @@ CREATE TABLE IF NOT EXISTS experiments (
     submission_id BIGINT UNSIGNED, -- Optional during insert
     user_id CHAR(36) NOT NULL,
     status ENUM('PENDING', 'APPROVED', 'REJECTED') NOT NULL DEFAULT 'PENDING',
+    research_id INTEGER,
 
-    FOREIGN KEY (user_id) REFERENCES user_info(user_id)
+    FOREIGN KEY (user_id) REFERENCES user_info(user_id),
+    FOREIGN KEY (research_id) REFERENCES research_metadata(research_id)
+
 );
 
 CREATE TABLE IF NOT EXISTS data_submission (

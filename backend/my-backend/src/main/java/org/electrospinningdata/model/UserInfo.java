@@ -44,23 +44,6 @@ public class UserInfo {
 
     @Setter
     @Getter
-    private String doi;
-
-    @Setter
-    @Getter
-    private String deviceManufacturer;
-
-    @Setter
-    @Getter
-    protected String deviceModel;
-
-    @Setter
-    @Getter
-    @Column(name = "custom_device")
-    private Boolean customDevice;
-
-    @Setter
-    @Getter
     @Column(name = "show_publicly")
     private Boolean showPublicly;
 

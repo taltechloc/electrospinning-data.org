@@ -65,12 +65,17 @@ public class SubmitDataService {
     @Autowired
     private FiberImagesRepository fiberImagesRepository;
 
+    @Autowired
+    private  ResearchMetadataRepository researchMetadataRepository;
+
     public String submitData(SubmitDataDTO submitDataDTO) {
         if (submitDataDTO == null || submitDataDTO.getUserMetadata() == null) {
             throw new IllegalArgumentException("SubmitDataDTO or userMetadata cannot be null");
         }
 
         UserInfo userInfo = createUser(submitDataDTO.getUserMetadata());
+
+        ResearchMetadata researchMetadata = createResearch(submitDataDTO.getResearchMetadata(), userInfo);
 
         DataSubmission dataSubmission = new DataSubmission();
         dataSubmission.setUserInfo(userInfo);
@@ -85,6 +90,8 @@ public class SubmitDataService {
 
                 if (experiment != null) {
                     experiment.setSubmission(dataSubmission);
+
+                    experiment.setResearchId(researchMetadata.getResearchId());
                     experimentRepository.save(experiment);
 
                     savePolymerProperties(experiment, experimentData);
@@ -102,25 +109,13 @@ public class SubmitDataService {
 
         return "Data submitted successfully";
     }
-
     private UserInfo createUser(UserMetadataDTO userMetadata) {
         if (userMetadata == null) return null;
 
-        // Check if user with the same email exists
-        Optional<UserInfo> existingUserByEmail = Optional.empty();
-        if (userMetadata.getEmail() != null) {
-            existingUserByEmail = userRepository.findByEmail(userMetadata.getEmail());
-            if (existingUserByEmail.isPresent()) {
-                return existingUserByEmail.get();
-            }
-        }
-
-        // Check if user with the same name exists
         Optional<UserInfo> existingUser = userRepository.findByEmailOrName(userMetadata.getEmail(), userMetadata.getName());
         if (existingUser.isPresent()) {
             return existingUser.get();
         }
-
 
         // No existing user found, create new
         String userId = UUID.randomUUID().toString();
@@ -134,10 +129,6 @@ public class SubmitDataService {
         if (userMetadata.getAffiliation() != null) userInfo.setAffiliation(userMetadata.getAffiliation());
         if (userMetadata.getCountry() != null) userInfo.setCountry(userMetadata.getCountry());
         if (userMetadata.getOrcid() != null) userInfo.setOrcid(userMetadata.getOrcid());
-        if (userMetadata.getDoi() != null) userInfo.setDoi(userMetadata.getDoi());
-        if (userMetadata.getDeviceManufacturer() != null) userInfo.setDeviceManufacturer(userMetadata.getDeviceManufacturer());
-        if (userMetadata.getDeviceModel() != null) userInfo.setDeviceModel(userMetadata.getDeviceModel());
-        if (userMetadata.getCustomDevice() != null) userInfo.setCustomDevice(userMetadata.getCustomDevice());
         if (userMetadata.getShowPublicly() != null) userInfo.setShowPublicly(userMetadata.getShowPublicly());
         if (userMetadata.getConsentTerms() != null) userInfo.setConsentTerms(userMetadata.getConsentTerms());
 
@@ -145,6 +136,25 @@ public class SubmitDataService {
         return userInfo;
     }
 
+
+    private ResearchMetadata createResearch(ResearchMetadataDTO researchMetadata, UserInfo userInfo) {
+        if (researchMetadata == null) return null;
+
+        Optional<ResearchMetadata> existingResearch = researchMetadataRepository.findByDoiOrPublicationTitle(researchMetadata.getDoi(), researchMetadata.getPublicationTitle());
+        if (existingResearch.isPresent()) {
+            return existingResearch.get();
+        }
+
+        ResearchMetadata researchData = new ResearchMetadata();
+        researchData.setUserId(userInfo);
+        if (researchMetadata.getDoi() != null) researchData.setDoi(researchMetadata.getDoi());
+        if (researchMetadata.getDeviceManufacturer() != null) researchData.setDeviceManufacturer(researchMetadata.getDeviceManufacturer());
+        if (researchMetadata.getDeviceModel() != null) researchData.setDeviceModel(researchMetadata.getDeviceModel());
+        if (researchMetadata.getCustomDevice() != null) researchData.setCustomDevice(researchMetadata.getCustomDevice());
+
+        researchMetadataRepository.save(researchData);
+        return researchData;
+    }
 
     private Experiments createExperiment(String userId, ExperimentDataDTO experimentData) {
         if (experimentData == null) return null;

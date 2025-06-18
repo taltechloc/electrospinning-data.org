@@ -11,5 +11,9 @@ public class SubmitDataDTO {
     private UserMetadataDTO userMetadata;
     @Setter
     @Getter
+    private ResearchMetadataDTO researchMetadata;
+
+    @Setter
+    @Getter
     private List<ExperimentDataDTO> experimentData;  // Changed to List
 }
