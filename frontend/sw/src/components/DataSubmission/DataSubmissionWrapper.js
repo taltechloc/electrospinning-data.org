@@ -3,10 +3,12 @@ import React, { useState } from "react";
 import UserMetadataForm from "./UserMetadataForm";
 import ElectrospinningTable from "./ElectrospinningTable";
 import { sendDataToBackend } from "../../services/dataService";
+import ResearchMetadataForm from "./ResearchMetadataForm";
 
 export default function DataSubmissionWrapper() {
     const [step, setStep] = useState(1);
     const [userMetadata, setUserMetadata] = useState(null);
+    const [researchMetadata, setResearchMetadata] = useState(null);
     const [experimentData, setExperimentData] = useState(null);
 
     const handleUserMetadataNext = (data) => {
@@ -14,11 +16,17 @@ export default function DataSubmissionWrapper() {
         setStep(2);
     };
 
+    const handleResearchMetadataNext = (data) => {
+        setResearchMetadata(data);
+        setStep(3);
+    };
+
     const handleExperimentDataSubmit = async (dataFromTable) => {
         setExperimentData(dataFromTable);
 
         const payload = {
             userMetadata,
+            researchMetadata,
             experimentData: dataFromTable,
         };
 
@@ -40,7 +48,8 @@ export default function DataSubmissionWrapper() {
     return (
         <div>
             {step === 1 && <UserMetadataForm onNext={handleUserMetadataNext} />}
-            {step === 2 && (
+            {step === 2 && <ResearchMetadataForm onNext={handleResearchMetadataNext} />}
+            {step === 3 && (
                 <ElectrospinningTable
                     onSubmit={handleExperimentDataSubmit}
                 />

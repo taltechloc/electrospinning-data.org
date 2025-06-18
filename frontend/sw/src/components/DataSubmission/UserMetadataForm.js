@@ -10,11 +10,6 @@ export default function UserMetadataForm({ onNext }) {
         country: "",
         role: "",
         orcid: "",
-        doi: "",
-        deviceManufacturer: "",
-        deviceModel: "",
-        customDevice: false,
-        showPublicly: false,
         consentTerms: false,
     });
 
@@ -123,56 +118,6 @@ export default function UserMetadataForm({ onNext }) {
                 placeholder="0000-0000-0000-0000"
             />
 
-            <label htmlFor="doi" style={styles.label}>DOI:</label>
-            <input
-                id="doi"
-                type="text"
-                name="doi"
-                value={userMetadata.doi}
-                onChange={handleChange}
-                style={styles.input}
-                placeholder="Digital Object Identifier"
-            />
-
-            <label style={styles.checkboxLabel}>
-                <input
-                    type="checkbox"
-                    name="customDevice"
-                    checked={userMetadata.customDevice}
-                    onChange={handleChange}
-                    style={styles.checkbox}
-                />
-                DIY / Custom-Built Device
-            </label>
-
-            <label htmlFor="deviceManufacturer" style={styles.label}>
-                Device Manufacturer:
-            </label>
-            <input
-                id="deviceManufacturer"
-                type="text"
-                name="deviceManufacturer"
-                value={userMetadata.deviceManufacturer}
-                onChange={handleChange}
-                style={styles.input}
-                placeholder="e.g., Inovenso, Linari"
-                disabled={userMetadata.customDevice}
-            />
-
-            <label htmlFor="deviceModel" style={styles.label}>
-                Device Model:
-            </label>
-            <input
-                id="deviceModel"
-                type="text"
-                name="deviceModel"
-                value={userMetadata.deviceModel}
-                onChange={handleChange}
-                style={styles.input}
-                placeholder="e.g., NE300"
-                disabled={userMetadata.customDevice}
-            />
-
             <label style={styles.checkboxLabel}>
                 <input
                     type="checkbox"
@@ -197,7 +142,7 @@ export default function UserMetadataForm({ onNext }) {
             </label>
 
             <button type="submit" style={styles.button} aria-label="Proceed to experiment data">
-                Next: Experiment Data
+                Next: Research Metadata
             </button>
         </form>
     );
