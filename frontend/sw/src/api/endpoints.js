@@ -1,7 +1,9 @@
 // src/api/endpoints.js
 
-// const BASE_URL =  'http://localhost:8080/api';
-const BASE_URL = "/api"
+const BASE_URL =
+    process.env.NODE_ENV === 'development'
+        ? 'http://localhost:8080/api'
+        : '/api';
 
 export const endpoints = {
     submitData: `${BASE_URL}/data/submit`,
@@ -14,7 +16,5 @@ export const endpoints = {
     RefreshContributorsCache: `${BASE_URL}/contributors/cache/refresh`,
     RefreshDatasetCache: `${BASE_URL}/export/cache/refresh-cache`,
     SubmitFeedback: `${BASE_URL}/feedback/submit`,
-    GetAllFeedback: `${BASE_URL}/feedback/all`
-
-
+    GetAllFeedback: `${BASE_URL}/feedback/all`,
 };
