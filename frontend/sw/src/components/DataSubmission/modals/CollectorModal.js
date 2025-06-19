@@ -92,16 +92,79 @@ export default function CollectorModal({ collector = {}, onClose, onSave }) {
             setErrors((prev) => ({ ...prev, [name]: null }));
         }
     };
-    const validate = () => {
-        const newErrors = {};
+        const validate = () => {
+            const { collectorType, collectorDefinition } = localCollector;
+            const newErrors = {};
+            const isEmpty = (val) => val === "" || val === null || val === undefined;
 
-        if (!localCollector.collectorType  || localCollector.collectorType==="-- Select Type --" ) {
-            newErrors.collectorType = "Collector type is required";
-        }
+            // Collector type must be selected
+            if (!collectorType || collectorType === "-- Select Type --") {
+                newErrors.collectorType = "Collector type is required";
+            }
 
-        setErrors(newErrors);
-        return Object.keys(newErrors).length === 0;
-    };
+            // Material can be empty, so no validation for it here
+
+            // Collector-type specific validations
+            switch (collectorType) {
+                case "Flat":
+                    if (isEmpty(collectorDefinition.height)) {
+                        newErrors.height = "Height is required";
+                    }
+                    if (isEmpty(collectorDefinition.width)) {
+                        newErrors.width = "Width is required";
+                    }
+                    break;
+
+                case "Rotating Drum":
+                case "Rotating Mandrel":
+                    if (isEmpty(collectorDefinition.diameter)) {
+                        newErrors.diameter = "Diameter is required";
+                    }
+                    if (isEmpty(collectorDefinition.length)) {
+                        newErrors.length = "Length is required";
+                    }
+                    if (isEmpty(collectorDefinition.rotationSpeed)) {
+                        newErrors.rotationSpeed = "Rotation speed is required";
+                    }
+                    break;
+
+                case "Parallel Electrodes":
+                    if (isEmpty(collectorDefinition.electrodeGap)) {
+                        newErrors.electrodeGap = "Electrode gap is required";
+                    }
+                    break;
+
+                case "Wire":
+                    if (isEmpty(collectorDefinition.wireDiameter)) {
+                        newErrors.wireDiameter = "Wire diameter is required";
+                    }
+                    if (isEmpty(collectorDefinition.wireLength)) {
+                        newErrors.wireLength = "Wire length is required";
+                    }
+                    break;
+
+                case "Liquid Bath":
+                    if (isEmpty(collectorDefinition.bathDepth)) {
+                        newErrors.bathDepth = "Bath depth is required";
+                    }
+                    if (isEmpty(collectorDefinition.bathDiameter)) {
+                        newErrors.bathDiameter = "Bath diameter is required";
+                    }
+                    break;
+
+                case "Electrostatic Field":
+                    if (isEmpty(collectorDefinition.fieldStrength)) {
+                        newErrors.fieldStrength = "Field strength is required";
+                    }
+                    if (isEmpty(collectorDefinition.plateDistance)) {
+                        newErrors.plateDistance = "Plate distance is required";
+                    }
+                    break;
+            }
+
+            setErrors(newErrors);
+            return Object.keys(newErrors).length === 0;
+        };
 
 
 
@@ -187,7 +250,7 @@ export default function CollectorModal({ collector = {}, onClose, onSave }) {
 
                 {/* Collector Type */}
                 <label style={labelStyle}>
-                    Collector Type:
+                    Collector Type:<span style={{ color: "red" }}>*</span>
                     <DropDown
                         name="collectorType"
                         value={localCollector.collectorType}
@@ -233,7 +296,7 @@ export default function CollectorModal({ collector = {}, onClose, onSave }) {
                 {["Rotating Drum", "Rotating Mandrel"].includes(localCollector.collectorType) && (
                     <>
                         <label style={inlineLabelStyle}>
-                            <span style={{ minWidth: 80 }}>Diameter:</span>
+                            Diameter:<span style={{ color: "red" }}>*</span>
                             <input
                                 name="diameter"
                                 value={localCollector.collectorDefinition.diameter ?? ""}
@@ -244,8 +307,10 @@ export default function CollectorModal({ collector = {}, onClose, onSave }) {
                             />
                             <span style={{ marginLeft: 8 }}>cm</span>
                         </label>
+                        {errors.diameter && <div style={errorTextStyle}>{errors.diameter}</div>}
+
                         <label style={inlineLabelStyle}>
-                            <span style={{ minWidth: 60 }}>Length:</span>
+                            Length<span style={{ color: "red" }}>*</span>
                             <input
                                 name="length"
                                 value={localCollector.collectorDefinition.length ?? ""}
@@ -256,8 +321,10 @@ export default function CollectorModal({ collector = {}, onClose, onSave }) {
                             />
                             <span style={{ marginLeft: 8 }}>cm</span>
                         </label>
+                        {errors.length && <div style={errorTextStyle}>{errors.length}</div>}
+
                         <label style={inlineLabelStyle}>
-                            <span style={{ minWidth: 120 }}>Rotation Speed:</span>
+                            Rotation Speed:<span style={{ color: "red" }}>*</span>
                             <input
                                 name="rotationSpeed"
                                 value={localCollector.collectorDefinition.rotationSpeed ?? ""}
@@ -268,30 +335,34 @@ export default function CollectorModal({ collector = {}, onClose, onSave }) {
                             />
                             <span style={{ marginLeft: 8 }}>rpm</span>
                         </label>
+                        {errors.rotationSpeed && <div style={errorTextStyle}>{errors.rotationSpeed}</div>}
+
                     </>
                 )}
 
                 {/* PARALLEL ELECTRODES */}
                 {localCollector.collectorType === "Parallel Electrodes" && (
-                    <label style={inlineLabelStyle}>
-                        <span style={{ minWidth: 110 }}>Electrode Gap:</span>
-                        <input
-                            name="electrodeGap"
-                            value={localCollector.collectorDefinition.electrodeGap ?? ""}
-                            onChange={handleChange}
-                            type="number"
-                            placeholder="Gap"
-                            style={{ ...inputStyle, flexGrow: 1 }}
-                        />
-                        <span style={{ marginLeft: 8 }}>cm</span>
-                    </label>
+                    <>
+                        <label style={inlineLabelStyle}>
+                            Electrode Gap:<span style={{ color: "red" }}>*</span>
+                            <input
+                                name="electrodeGap"
+                                value={localCollector.collectorDefinition.electrodeGap ?? ""}
+                                onChange={handleChange}
+                                type="number"
+                                placeholder="Gap"
+                                style={{ ...inputStyle, flexGrow: 1 }}
+                            />
+                            <span style={{ marginLeft: 8 }}>cm</span>
+                        </label>
+                        {errors.electrodeGap && <div style={errorTextStyle}>{errors.electrodeGap}</div>}
+                    </>
                 )}
 
-                {/* WIRE */}
                 {localCollector.collectorType === "Wire" && (
                     <>
                         <label style={inlineLabelStyle}>
-                            <span style={{ minWidth: 100 }}>Wire Diameter:</span>
+                            Wire Diameter:<span style={{ color: "red" }}>*</span>
                             <input
                                 name="wireDiameter"
                                 value={localCollector.collectorDefinition.wireDiameter ?? ""}
@@ -302,8 +373,10 @@ export default function CollectorModal({ collector = {}, onClose, onSave }) {
                             />
                             <span style={{ marginLeft: 8 }}>mm</span>
                         </label>
+                        {errors.wireDiameter && <div style={errorTextStyle}>{errors.wireDiameter}</div>}
+
                         <label style={inlineLabelStyle}>
-                            <span style={{ minWidth: 100 }}>Wire Length:</span>
+                            Wire Length:<span style={{ color: "red" }}>*</span>
                             <input
                                 name="wireLength"
                                 value={localCollector.collectorDefinition.wireLength ?? ""}
@@ -314,14 +387,14 @@ export default function CollectorModal({ collector = {}, onClose, onSave }) {
                             />
                             <span style={{ marginLeft: 8 }}>cm</span>
                         </label>
+                        {errors.wireLength && <div style={errorTextStyle}>{errors.wireLength}</div>}
                     </>
                 )}
 
-                {/* LIQUID BATH */}
                 {localCollector.collectorType === "Liquid Bath" && (
                     <>
                         <label style={inlineLabelStyle}>
-                            <span style={{ minWidth: 90 }}>Bath Depth:</span>
+                            Bath Depth:<span style={{ color: "red" }}>*</span>
                             <input
                                 name="bathDepth"
                                 value={localCollector.collectorDefinition.bathDepth ?? ""}
@@ -332,8 +405,10 @@ export default function CollectorModal({ collector = {}, onClose, onSave }) {
                             />
                             <span style={{ marginLeft: 8 }}>cm</span>
                         </label>
+                        {errors.bathDepth && <div style={errorTextStyle}>{errors.bathDepth}</div>}
+
                         <label style={inlineLabelStyle}>
-                            <span style={{ minWidth: 90 }}>Bath Diameter:</span>
+                            Bath Diameter:<span style={{ color: "red" }}>*</span>
                             <input
                                 name="bathDiameter"
                                 value={localCollector.collectorDefinition.bathDiameter ?? ""}
@@ -344,14 +419,14 @@ export default function CollectorModal({ collector = {}, onClose, onSave }) {
                             />
                             <span style={{ marginLeft: 8 }}>cm</span>
                         </label>
+                        {errors.bathDiameter && <div style={errorTextStyle}>{errors.bathDiameter}</div>}
                     </>
                 )}
 
-                {/* ELECTROSTATIC FIELD */}
                 {localCollector.collectorType === "Electrostatic Field" && (
                     <>
                         <label style={inlineLabelStyle}>
-                            <span style={{ minWidth: 100 }}>Field Strength:</span>
+                            Field Strength:<span style={{ color: "red" }}>*</span>
                             <input
                                 name="fieldStrength"
                                 value={localCollector.collectorDefinition.fieldStrength ?? ""}
@@ -362,8 +437,10 @@ export default function CollectorModal({ collector = {}, onClose, onSave }) {
                             />
                             <span style={{ marginLeft: 8 }}>kV/m</span>
                         </label>
+                        {errors.fieldStrength && <div style={errorTextStyle}>{errors.fieldStrength}</div>}
+
                         <label style={inlineLabelStyle}>
-                            <span style={{ minWidth: 110 }}>Plate Distance:</span>
+                            Plate Distance:<span style={{ color: "red" }}>*</span>
                             <input
                                 name="plateDistance"
                                 value={localCollector.collectorDefinition.plateDistance ?? ""}
@@ -374,9 +451,9 @@ export default function CollectorModal({ collector = {}, onClose, onSave }) {
                             />
                             <span style={{ marginLeft: 8 }}>cm</span>
                         </label>
+                        {errors.plateDistance && <div style={errorTextStyle}>{errors.plateDistance}</div>}
                     </>
                 )}
-
                 {/* Material */}
                 <label style={labelStyle}>
                     Material:
