@@ -192,20 +192,22 @@ export default function PreviewDatasetPage() {
                     <thead>
                     <tr>
                         <th>##</th>
+                        <th>DOI</th>
                         <th>Polymers</th>
                         <th>Solvents</th>
                         <th>Concentration</th>
                         <th>Collector Type</th>
-                        <th>Collector RPM (if applicable)</th>
+                        {/*<th>Collector RPM (if applicable)</th>*/}
                         <th>Needle Type</th>
                         <th>Needle Property</th>
                         <th>Voltage</th>
+                        <th>Tip-to-collector Distance</th>
                         <th>Flow Rate</th>
+                        <th>Temperature</th>
+                        <th>Humidity</th>
                         <th>Stable Formation</th>
                         <th>Fiber Diameter</th>
                         <th>Fiber Diameter STDEV</th>
-                        <th>Product Weight</th>
-                        <th>Experiment Quality Grade</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -215,6 +217,7 @@ export default function PreviewDatasetPage() {
                             ref={index === data.length - 1 ? lastRowRef : null}
                         >
                             <td>{index + 1}</td>
+                            <td>{item.researchMetadata?.doi}</td>
                             <td>
                                 {item.polymerProperty?.polymerComponents?.map(p =>
                                     `${p.polymerName}`
@@ -227,16 +230,17 @@ export default function PreviewDatasetPage() {
                             </td>
                             <td>{item.solutionProperty?.concentration} {item.solutionProperty?.concentrationUnit}</td>
                             <td>{item.collectorProperty?.collectorType}</td>
-                            <td>{item.collectorProperty?.collectorDefinition?.rotationSpeed}</td>
+                            {/*<td>{item.collectorProperty?.collectorDefinition?.rotationSpeed}</td>*/}
                             <td>{item.needleProperty?.needleType}</td>
                             <td>{item.needleProperty?.needleDefinition?.diameter} {item.needleProperty?.needleDefinition?.diameterUnit}</td>
                             <td>{item.processParameter?.voltage} {item.processParameter?.voltageUnit}</td>
+                            <td>{item.processParameter?.tipCollectorDistance} {item.processParameter?.tipCollectorDistanceUnit}</td>
                             <td>{item.processParameter?.flowRate} {item.processParameter?.flowRateUnit}</td>
+                            <td>{item.ambientParameter?.temperature} {item.ambientParameter?.temperatureUnit}</td>
+                            <td>{item.ambientParameter?.humidity} {item.ambientParameter?.humidityUnit}</td>
                             <td>{item.fiberProperty?.isFormationStable ? 'Yes' : 'No'}</td>
                             <td>{item.fiberProperty?.fiberDiameter} {item.fiberProperty?.fiberDiameterUnit}</td>
                             <td>{item.fiberProperty?.fiberDiameterVariation} {item.fiberProperty?.fiberDiameterVariationUnit}</td>
-                            <td>{item.fiberProperty?.productWeight} {item.fiberProperty?.productWeightUnit}</td>
-                            <td>{item.fiberProperty?.qualityGrade}</td>
                         </tr>
                     ))}
                     </tbody>

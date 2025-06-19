@@ -2,7 +2,7 @@
 .layout-container {
   font-family: 'Arial', sans-serif;
   background-color: #f8f9fa; /* Light gray background for the entire page */
-  display: flex;
+  display: compact;
   flex-direction: column;
   min-height: 100vh; /* Ensure the layout takes up the full height of the page */
 }

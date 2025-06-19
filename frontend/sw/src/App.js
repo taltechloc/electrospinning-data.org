@@ -37,11 +37,11 @@ const App = () => {
           <Route path="/terms" element={<Layout><TermsPage /></Layout>} />
           <Route path="/license" element={<Layout><LicensePage /></Layout>} />
           <Route path="/contributors" element={<Layout><ContributorsPage /></Layout>} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<Layout><Login /></Layout>} />
           <Route path="/admin" element={<ProtectedAdminRoute />} />
-          <Route path="/electrospinningTable" element={<DataSubmissionWrapper />} />
+          <Route path="/electrospinningTable" element={<Layout><DataSubmissionWrapper /></Layout>} />
           <Route path="/feedbackPage" element={<Layout><FeedbackPage /></Layout>} />
-          <Route path="/previewDatasetPage" element={<PreviewDatasetPage />} />
+          <Route path="/previewDatasetPage" element={<Layout><PreviewDatasetPage /></Layout>} />
           <Route path="/moderationPage" element={<Moderation />} />
           <Route path="/contactAndFeedbackPage" element={<Layout><ContactAndFeedbackPage /></Layout>} />
           <Route path="/admin/feedback" element={<FeedbackListPage />} />
