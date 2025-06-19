@@ -393,7 +393,7 @@ export default function ElectrospinningTable({ onSubmit }) {
                     <th style={thStyle}>Needle <span style={{color: 'red'}}>*</span></th>
                     <th style={thStyle}>Voltage (kV) <span style={{color: 'red'}}>*</span></th>
                     <th style={thStyle}>Flow Rate (ml/h) <span style={{color: 'red'}}>*</span></th>
-                    <th style={thStyle}>Distance (cm) <span style={{color: 'red'}}>*</span></th>
+                    <th style={thStyle}>Tip-to-collector Distance (cm) <span style={{color: 'red'}}>*</span></th>
                     <th style={thStyle}>Spinning Duration (min)</th>
                     <th style={thStyle}>Temperature (°C)</th>
                     <th style={thStyle}>Humidity (%) </th>
