@@ -83,7 +83,6 @@ export default function PolymerModal({ polymerList, onClose, onSave }) {
         setPolymers(updatedPolymers.length ? updatedPolymers : [createEmptyPolymer()]);
         setErrors(updatedErrors.length ? updatedErrors : [{}]);
     };
-
     const validate = () => {
         const newErrors = [];
         const moreThanOnePolymer = polymers.length > 1;
@@ -92,6 +91,13 @@ export default function PolymerModal({ polymerList, onClose, onSave }) {
 
         polymers.forEach((p, index) => {
             const err = {};
+
+            // Validate polymerName selection
+            if (!p.polymerName || p.polymerName.trim() === "") {
+                err.polymerName = "Polymer type is required";
+            } else if (!polymerNames.includes(p.polymerName)) {
+                err.polymerName = "Invalid polymer type selected";
+            }
 
             if (moreThanOnePolymer) {
                 if (p.weightRatio === "" || p.weightRatio === null || isNaN(p.weightRatio)) {
@@ -127,6 +133,7 @@ export default function PolymerModal({ polymerList, onClose, onSave }) {
         return !newErrors.some(err => Object.keys(err).length > 0);
     };
 
+
     const handleSubmit = (e) => {
         e.preventDefault();
         if (validate()) {
@@ -159,7 +166,6 @@ export default function PolymerModal({ polymerList, onClose, onSave }) {
                         </button>
 
                         <strong style={{ marginBottom: 8 }}>Polymer #{index + 1}</strong>
-
                         <label style={labelStyle}>
                             <span>Polymer<span style={{ color: "red", marginLeft: 4 }}>*</span></span>
                             <Select
@@ -175,6 +181,11 @@ export default function PolymerModal({ polymerList, onClose, onSave }) {
                                 placeholder="Select polymer"
                                 isSearchable
                             />
+                            {errors[index]?.polymerName && (
+                                <div style={{ color: "red", marginTop: 4 }}>
+                                    {errors[index].polymerName}
+                                </div>
+                            )}
                         </label>
 
                         <label style={labelStyle}>
