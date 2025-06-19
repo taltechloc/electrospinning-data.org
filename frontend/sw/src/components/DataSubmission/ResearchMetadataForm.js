@@ -77,7 +77,7 @@ export default function ResearchMetadataForm({ onNext, onBack }) {
                 value={researchMetadata.deviceManufacturer}
                 onChange={handleChange}
                 style={styles.input}
-                placeholder="e.g., Inovenso, Linari"
+                placeholder="Device Manufacturer"
                 disabled={researchMetadata.customDevice}
             />
 
@@ -91,7 +91,7 @@ export default function ResearchMetadataForm({ onNext, onBack }) {
                 value={researchMetadata.deviceModel}
                 onChange={handleChange}
                 style={styles.input}
-                placeholder="e.g., NE300"
+                placeholder="Device Model"
                 disabled={researchMetadata.customDevice}
             />
             <div style={{ marginTop: "1rem" }}>
