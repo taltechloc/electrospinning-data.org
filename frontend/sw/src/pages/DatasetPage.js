@@ -53,8 +53,6 @@ const DatasetPage = () => {
             <h2>📁 Dataset Details</h2>
             <ul style={styles.datasetInfo}>
               <li style={styles.datasetInfoItem}>Format: Excel (.xlsx)</li>
-              <li style={styles.datasetInfoItem}>Size: ~30 KB</li>
-              <li style={styles.datasetInfoItem}>Last Updated: <span id="updated-date">June 20025</span></li>
             </ul>
           </section>
 
