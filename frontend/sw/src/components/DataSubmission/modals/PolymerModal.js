@@ -37,19 +37,21 @@ export default function PolymerModal({ polymerList, onClose, onSave }) {
 
     const [polymers, setPolymers] = useState([createEmptyPolymer()]);
     const [errors, setErrors] = useState([]);
-
     useEffect(() => {
         const initializedPolymers = Array.isArray(polymerList) && polymerList.length > 0
             ? polymerList
             : [createEmptyPolymer()];
 
-        // If only one polymer, set default weightRatio to 100
         if (initializedPolymers.length <= 1) {
+            // One polymer: weightRatio 100
             setPolymers(initializedPolymers.map(p => ({ ...p, weightRatio: 100 })));
         } else {
-            setPolymers(initializedPolymers);
+            // Multiple polymers: weightRatio empty by default (or as per polymerList)
+            setPolymers(initializedPolymers.map(p => ({
+                ...p,
+                weightRatio: p.weightRatio ?? ""  // default to empty string if null
+            })));
         }
-
         setErrors([]);
     }, [polymerList]);
 
@@ -73,9 +75,18 @@ export default function PolymerModal({ polymerList, onClose, onSave }) {
     };
 
     const handleAddPolymer = () => {
-        setPolymers(prev => [...prev, createEmptyPolymer()]);
+        setPolymers(prev => {
+            const newPolymers = [...prev, createEmptyPolymer()];
+
+            // Reset all weightRatio to empty when more than 1 polymer
+            if (newPolymers.length > 1) {
+                return newPolymers.map(p => ({ ...p, weightRatio: "" }));
+            }
+            return newPolymers;
+        });
         setErrors(prev => [...prev, {}]);
     };
+
 
     const handleRemovePolymer = (index) => {
         const updatedPolymers = polymers.filter((_, i) => i !== index);
