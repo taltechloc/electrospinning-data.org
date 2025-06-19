@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "../../styles/UserMetadataFormStyle";
 
-export default function ResearchMetadataForm({ onNext }) {
+export default function ResearchMetadataForm({ onNext, onBack }) {
     const [researchMetadata, setResearchMetadata] = useState({
         publicationTitle: "",
         doi: "",
@@ -9,6 +9,7 @@ export default function ResearchMetadataForm({ onNext }) {
         deviceModel: "",
         customDevice: false,
     });
+
 
     const [error, setError] = useState("");
 
@@ -93,10 +94,31 @@ export default function ResearchMetadataForm({ onNext }) {
                 placeholder="e.g., NE300"
                 disabled={researchMetadata.customDevice}
             />
+            <div style={{ marginTop: "1rem" }}>
+                <button
+                    type="button"
+                    onClick={onBack}
+                    style={{
+                        ...styles.button,
+                        backgroundColor: "#6c757d", // a neutral gray
+                        color: "white",              // ensure contrast
+                        marginBottom: "0.5rem",
+                    }}
+                    aria-label="Go back to user metadata"
+                >
+                    Back: Contributor Metadata
+                </button>
 
-            <button type="submit" style={styles.button} aria-label="Proceed to experiment data">
-                Next: Experiment Data
-            </button>
+                <button
+                    type="submit"
+                    style={styles.button}
+                    aria-label="Proceed to experiment data"
+                >
+                    Next: Experiment Data
+                </button>
+
+            </div>
+
         </form>
     );
 }

@@ -48,7 +48,12 @@ export default function DataSubmissionWrapper() {
     return (
         <div>
             {step === 1 && <UserMetadataForm onNext={handleUserMetadataNext} />}
-            {step === 2 && <ResearchMetadataForm onNext={handleResearchMetadataNext} />}
+            {step === 2 && (
+                <ResearchMetadataForm
+                    onNext={handleResearchMetadataNext}
+                    onBack={() => setStep(1)}
+                />
+            )}
             {step === 3 && (
                 <ElectrospinningTable
                     onSubmit={handleExperimentDataSubmit}

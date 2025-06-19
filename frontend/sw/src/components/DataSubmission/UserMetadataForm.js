@@ -10,6 +10,7 @@ export default function UserMetadataForm({ onNext }) {
         country: "",
         role: "",
         orcid: "",
+        showPublicly: true,
         consentTerms: false,
     });
 
@@ -35,7 +36,7 @@ export default function UserMetadataForm({ onNext }) {
 
     return (
         <form onSubmit={handleSubmit} style={styles.formContainer} noValidate>
-            <h2 style={styles.heading}>User Metadata</h2>
+            <h2 style={styles.heading}>Contributor Metadata</h2>
 
             {error && <p style={styles.errorMessage}>{error}</p>}
 
@@ -126,7 +127,7 @@ export default function UserMetadataForm({ onNext }) {
                     onChange={handleChange}
                     style={styles.checkbox}
                 />
-                Show Data Publicly
+                Show my name, affiliation, country, and ORCID under contributors page.
             </label>
 
             <label style={styles.checkboxLabel}>
