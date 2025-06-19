@@ -19,7 +19,7 @@ const needleTypes = [
     { label: "Single Needle" },
     { label: "Coaxial" },
     { label: "Triaxial" },
-    { label: "Needle Array" },
+    // { label: "Needle Array" },
     { label: "Needleless" },
 ];
 
@@ -288,7 +288,7 @@ export default function NeedleModal({ needleData, onClose, onSave }) {
                 {needle.needleType === "Triaxial" && (
                     <>
                         <label style={labelStyle}>
-                            Inner Diameter*
+                            Inner Diameter<span style={{ color: "red" }}>*</span>
                             <input
                                 type="number"
                                 step="any"
@@ -300,7 +300,7 @@ export default function NeedleModal({ needleData, onClose, onSave }) {
                             {errors.innerDiameter && <div style={{ color: "red" }}>{errors.innerDiameter}</div>}
                         </label>
                         <label style={labelStyle}>
-                            Middle Diameter*
+                            Middle Diameter<span style={{ color: "red" }}>*</span>
                             <input
                                 type="number"
                                 step="any"
@@ -312,7 +312,7 @@ export default function NeedleModal({ needleData, onClose, onSave }) {
                             {errors.middleDiameter && <div style={{ color: "red" }}>{errors.middleDiameter}</div>}
                         </label>
                         <label style={labelStyle}>
-                            Outer Diameter*
+                            Outer Diameter<span style={{ color: "red" }}>*</span>
                             <input
                                 type="number"
                                 step="any"
@@ -432,7 +432,7 @@ export default function NeedleModal({ needleData, onClose, onSave }) {
 
                 {needle.needleType === "Needleless" && (
                     <label style={labelStyle}>
-                        Surface Type*
+                        Surface Type<span style={{ color: "red" }}>*</span>
                         <input
                             type="text"
                             name="surfaceType"
