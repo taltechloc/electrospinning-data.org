@@ -11,11 +11,16 @@ import {
     saveButtonStyle,
 } from "../../../styles/modals/SolutionModalStyle";
 
-const concentrationUnits = ["%", "wt%", "vol%", "mg/mL", "g/mL", "g/L"];
-const viscosityUnits = ["cP", "mPa·s"];
-const surfaceTensionUnits = ["mN/m", "dyne/cm"];
-const conductivityUnits = ["mS/cm", "µS/cm"];
-const evaporationRateUnits = ["mg/cm²/hr", "mg/cm²/min"];
+// const concentrationUnits = ["%", "wt%", "vol%", "mg/mL", "g/mL", "g/L"];
+const concentrationUnits = ["wt%"];
+// const viscosityUnits = ["cP", "mPa·s"];
+const viscosityUnits = ["cP"];
+// const surfaceTensionUnits = ["mN/m", "dyne/cm"];
+const surfaceTensionUnits = ["mN/m"];
+// const conductivityUnits = ["mS/cm", "µS/cm"];
+const conductivityUnits = ["mS/cm"];
+// const evaporationRateUnits = ["mg/cm²/hr", "mg/cm²/min"];
+const evaporationRateUnits = ["mg/cm²/hr"];
 
 function createEmptySolution() {
     return {
