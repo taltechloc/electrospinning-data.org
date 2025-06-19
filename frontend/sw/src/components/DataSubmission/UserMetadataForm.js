@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "../../styles/UserMetadataFormStyle";
+import {Link} from "react-router-dom";
 
 export default function UserMetadataForm({ onNext }) {
     const [userMetadata, setUserMetadata] = useState({
@@ -138,11 +139,16 @@ export default function UserMetadataForm({ onNext }) {
                     onChange={handleChange}
                     required
                     style={styles.checkbox}
+                    aria-label="Accept terms and conditions"
                 />
-                I accept the terms *
-            </label>
+                    I accept{' '}
+                    <Link to="/terms">Terms & Conditions</Link>{' '}
+                    and{' '}
+                    <Link to="/license" >License Agreement</Link>. <span style={{ color: "red" }}>*</span>
+                </label>
 
-            <button type="submit" style={styles.button} aria-label="Proceed to experiment data">
+
+                <button type="submit" style={styles.button} aria-label="Proceed to experiment data">
                 Next: Research Metadata
             </button>
         </form>
