@@ -4,6 +4,7 @@ import UserMetadataForm from "./UserMetadataForm";
 import ElectrospinningTable from "./ElectrospinningTable";
 import { sendDataToBackend } from "../../services/dataService";
 import ResearchMetadataForm from "./ResearchMetadataForm";
+import { Helmet } from 'react-helmet';
 
 export default function DataSubmissionWrapper() {
     const [step, setStep] = useState(1);
@@ -46,7 +47,12 @@ export default function DataSubmissionWrapper() {
 
 
     return (
-        <div>
+        <>
+            <Helmet>
+                <link rel="canonical" href="https://electrospinning-data.org/electrospinningTable" />
+            </Helmet>
+
+            <div>
             {step === 1 && <UserMetadataForm onNext={handleUserMetadataNext} />}
             {step === 2 && (
                 <ResearchMetadataForm
@@ -60,5 +66,7 @@ export default function DataSubmissionWrapper() {
                 />
             )}
         </div>
+        </>
+
     );
 }

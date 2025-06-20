@@ -1,9 +1,16 @@
 import React from 'react';
 import styles from '../styles/aboutStyles';
+import { Helmet } from 'react-helmet';
+
 
 const AboutPage = () => {
     return (
-        <div style={styles.container}>
+        <>
+            <Helmet>
+                <link rel="canonical" href="https://electrospinning-data.org/about" />
+            </Helmet>
+
+            <div style={styles.container}>
             <header>
                 <h1 style={styles.h1}>About the Platform</h1>
                 <p style={styles.paragraph}>
@@ -64,6 +71,8 @@ const AboutPage = () => {
                 </a>
             </section>
         </div>
+        </>
+
     );
 };
 

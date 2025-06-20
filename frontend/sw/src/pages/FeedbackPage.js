@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { submitFeedback } from "../services/feedbackService";
+import { Helmet } from 'react-helmet';
 
 const FeedbackPage = () => {
     const [formData, setFormData] = useState({
@@ -64,6 +65,10 @@ const FeedbackPage = () => {
     };
 
     return (
+        <>
+            <Helmet>
+                <link rel="canonical" href="https://electrospinning-data.org/feedbackPage" />
+            </Helmet>
         <div className="container py-5">
             {/* Explanation Section */}
             <div className="text-center mb-5">
@@ -178,6 +183,8 @@ const FeedbackPage = () => {
                 </div>
             </div>
         </div>
+        </>
+
     );
 };
 

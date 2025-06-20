@@ -2,9 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/home.css';
+import { Helmet } from 'react-helmet';
+
 
 const HomePage = () => {
   return (
+      <>
+          <Helmet>
+              <link rel="canonical" href="https://electrospinning-data.org/" />
+          </Helmet>
     <div className="container-fluid position-relative bg-light">
       {/* Hero Section */}
       <div className="hero-section text-center pt-5 pb-5">
@@ -55,6 +61,8 @@ const HomePage = () => {
       </div>
 
     </div>
+      </>
+
   );
 };
 

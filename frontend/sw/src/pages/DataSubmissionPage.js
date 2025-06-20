@@ -3,10 +3,15 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/submission/data_submission.css';
+import { Helmet } from 'react-helmet';
 
 const DataSubmissionPage = () => {
 
   return (
+      <>
+          <Helmet>
+              <link rel="canonical" href="https://electrospinning-data.org/dataSubmission" />
+          </Helmet>
       <div className="container-fluid data-submission-page">
         {/* Header Section */}
         <div className="hero-section text-center">
@@ -48,6 +53,8 @@ const DataSubmissionPage = () => {
 
         </div>
       </div>
+      </>
+
   );
 };
 
