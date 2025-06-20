@@ -1,13 +1,9 @@
 import React from 'react';
 import '../styles/legal.css';
-import { Helmet } from 'react-helmet';
 
 
 const TermsPage = () => (
-    <>
-        <Helmet>
-            <link rel="canonical" href="https://electrospinning-data.org/terms" />
-        </Helmet>
+
     <div className="legal-container">
         <h1>Terms and Conditions</h1>
         <p>By accessing, using, or contributing to this open-source electrospinning dataset platform, you agree to the following terms and conditions:</p>
@@ -74,8 +70,6 @@ const TermsPage = () => (
             <p>If you have any questions about these terms, the platform, or data usage, please contact us at <a href="mailto:mehrab.mahdian@taltech.ee">mehrab.mahdian@taltech.ee</a>.</p>
         </section>
     </div>
-    </>
-
 );
 
 export default TermsPage;

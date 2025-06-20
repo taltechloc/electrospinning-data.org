@@ -1,15 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Helmet } from 'react-helmet';
 
 const ContactAndSupportPage = () => {
 
     return (
-        <>
-            <Helmet>
-                <link rel="canonical" href="https://electrospinning-data.org/contactAndFeedbackPage" />
-            </Helmet>
+
         <div className="container py-5">
             {/* Contact Info */}
             <div className="text-center mb-5">
@@ -65,7 +61,6 @@ const ContactAndSupportPage = () => {
                 </div>
             </div>
         </div>
-    </>
 
 );
 };

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from '../styles/contributorStyles';
 import {fetchContributors} from "../services/contributorService";
-import { Helmet } from 'react-helmet';
 
 const ContributorsPage = () => {
     const [contributors, setContributors] = useState([]);
@@ -26,10 +25,7 @@ const ContributorsPage = () => {
     const filteredContributors = contributors.filter(contributor => contributor.name);
 
     return (
-        <>
-            <Helmet>
-                <link rel="canonical" href="https://electrospinning-data.org/contributors" />
-            </Helmet>
+
         <div style={styles.container}>
             <h1 style={styles.h1}>Contributors</h1>
             <p>
@@ -103,7 +99,6 @@ const ContributorsPage = () => {
                 </p>
             </section>
         </div>
-        </>
 
     );
 };

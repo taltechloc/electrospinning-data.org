@@ -1,12 +1,8 @@
 import React from 'react';
 import '../styles/legal.css';
-import { Helmet } from 'react-helmet';
 
 const LicensePage = () => (
-    <>
-        <Helmet>
-            <link rel="canonical" href="https://electrospinning-data.org/license" />
-        </Helmet>
+
     <div className="legal-container">
         <h1>License Agreement</h1>
         <p>
@@ -53,7 +49,6 @@ const LicensePage = () => (
             </p>
         </section>
     </div>
-    </>
 
 );
 

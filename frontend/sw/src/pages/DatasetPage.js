@@ -2,7 +2,6 @@ import React from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import { downloadDatasetExcel } from '../services/datasetService';
 import styles from '../styles/downloadStyles';
-import { Helmet } from 'react-helmet';
 
 const DatasetPage = () => {
   const navigate = useNavigate();
@@ -27,10 +26,7 @@ const DatasetPage = () => {
   };
 
   return (
-      <>
-        <Helmet>
-          <link rel="canonical" href="https://electrospinning-data.org/dataset" />
-        </Helmet>
+
       <div style={styles.container}>
         <header style={styles.header}>
           <h1 style={styles.title}>📊 Electrospinning Dataset Hub</h1>
@@ -88,7 +84,6 @@ const DatasetPage = () => {
         </footer>
 
       </div>
-      </>
 
   );
 };
