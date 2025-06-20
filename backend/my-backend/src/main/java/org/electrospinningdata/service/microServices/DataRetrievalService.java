@@ -143,6 +143,8 @@ public class DataRetrievalService {
         dto.setProductWeight(fiberProperties.getProductWeight());
         dto.setQualityGrade(fiberProperties.getQualityGrade());
 
+        dto.setIsFormationStable(fiberProperties.getIsFormationStable());
+
         if (fiberProperties.getFiberDiameterUnit() != null) {
             dto.setFiberDiameterUnit(fiberProperties.getFiberDiameterUnit().getUnit());
         }

@@ -39,6 +39,7 @@ public class ExperimentExcelService {
                 "spinning_duration", "spinning_duration_unit",
                 "temperature", "temperature_unit",
                 "humidity", "humidity_unit",
+                "was_formation_stable",
                 "fiber_diameter", "fiber_diameter_unit",
                 "fiber_diameter_variation", "fiber_diameter_variation_unit",
                 "morphology", "publication_title", "is_custom_device", "device_manufacturer", "device_model"
@@ -106,17 +107,18 @@ public class ExperimentExcelService {
             setStringCell(row, 33, safeValue(dto.getAmbientParameter(), AmbientParameterDTO::getHumidityUnit));
 
             // Fiber Properties + units
-            setDoubleCell(row, 34, safeValue(dto.getFiberProperty(), FiberPropertyDTO::getFiberDiameter));
-            setStringCell(row, 35, safeValue(dto.getFiberProperty(), FiberPropertyDTO::getFiberDiameterUnit));
-            setDoubleCell(row, 36, safeValue(dto.getFiberProperty(), FiberPropertyDTO::getFiberDiameterVariation));
-            setStringCell(row, 37, safeValue(dto.getFiberProperty(), FiberPropertyDTO::getFiberDiameterVariationUnit));
+            setBooleanCell(row, 34, dto.getFiberProperty().getIsFormationStable());
+            setDoubleCell(row, 35, safeValue(dto.getFiberProperty(), FiberPropertyDTO::getFiberDiameter));
+            setStringCell(row, 36, safeValue(dto.getFiberProperty(), FiberPropertyDTO::getFiberDiameterUnit));
+            setDoubleCell(row, 37, safeValue(dto.getFiberProperty(), FiberPropertyDTO::getFiberDiameterVariation));
+            setStringCell(row, 38, safeValue(dto.getFiberProperty(), FiberPropertyDTO::getFiberDiameterVariationUnit));
 
-            setJsonCell(row, 38, safeValue(dto.getFiberProperty(), FiberPropertyDTO::getFiberMorphology));
+            setJsonCell(row, 39, safeValue(dto.getFiberProperty(), FiberPropertyDTO::getFiberMorphology));
 
-            setStringCell(row, 39, dto.getResearchMetadata().getPublicationTitle());
-            setStringCell(row, 40, dto.getResearchMetadata().getCustomDevice());
-            setStringCell(row, 41, dto.getResearchMetadata().getDeviceManufacturer());
-            setStringCell(row, 42, dto.getResearchMetadata().getDeviceModel());
+            setStringCell(row, 40, dto.getResearchMetadata().getPublicationTitle());
+            setStringCell(row, 41, dto.getResearchMetadata().getCustomDevice());
+            setStringCell(row, 42, dto.getResearchMetadata().getDeviceManufacturer());
+            setStringCell(row, 43, dto.getResearchMetadata().getDeviceModel());
         }
 
         for (int i = 0; i < columns.length; i++) {
