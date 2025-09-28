@@ -59,12 +59,50 @@ const styles = {
         color: '#95a5a6',
     },
     link: {
-        color: '#e74c3c',
+        color: '#e74c3c', // Red accent color for links
         textDecoration: 'none',
     },
     linkHover: {
         textDecoration: 'underline',
     },
+    
+    citationCard: {
+        margin: '30px auto',
+        maxWidth: '600px',
+        padding: '25px',
+        borderRadius: '10px',
+        // Uses existing background and blue primary color for consistency
+        background: '#ecf0f1', 
+        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+        border: '2px solid #3498db', 
+        textAlign: 'left',
+    },
+    citationHeader: {
+        color: '#3498db', // Primary blue color
+        fontSize: '1.3em',
+        fontWeight: 700,
+        marginBottom: '15px',
+        paddingBottom: '5px',
+        borderBottom: '1px solid #bdc3c7', 
+    },
+    citationTextContainer: {
+        display: 'block',
+        fontSize: '1em',
+        lineHeight: '1.6',
+        color: '#333', 
+        backgroundColor: '#fff', 
+        padding: '10px',
+        borderRadius: '5px',
+        border: '1px dashed #95a5a6', 
+        fontFamily: 'monospace, "Courier New", Courier, sans-serif',
+    },
+    doiLink: {
+        color: '#e74c3c', // Uses the red accent color
+        textDecoration: 'none',
+        fontWeight: 'bold',
+        transition: 'color 0.3s ease',
+    }
+    // --- END NEW CITATION STYLES ---
 };
 
 export default styles;

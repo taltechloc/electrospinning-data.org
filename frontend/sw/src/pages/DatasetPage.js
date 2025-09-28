@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import { downloadDatasetExcel } from '../services/datasetService';
-import styles from '../styles/downloadStyles';
+import styles from '../styles/downloadStyles'; 
 
 const DatasetPage = () => {
   const navigate = useNavigate();
@@ -71,9 +71,32 @@ const DatasetPage = () => {
               ⚡ Note: This dataset is updated regularly. Check back for the latest version!
             </p>
           </section>
+          
+          {/* BEAUTIFIED CITATION CARD - Now using imported styles. */}
+          <section style={styles.citationCard}>
+            <h3 style={styles.citationHeader}>
+              📚 Please Cite This Work
+            </h3>
+            <span style={styles.citationTextContainer}>
+              Mehrab Mahdian, Ferenc Ender, Tamas Pardy. **<span style={{ fontStyle: 'italic' }}>An Open Web Platform for Standardized, Community-Driven Electrospinning Data Collection.</span>** TechRxiv. June 27, 2025.
+              <br /><br />
+              **DOI:** <a 
+                href="https://doi.org/10.36227/techrxiv.175099633.32220861/v1" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                style={styles.doiLink}
+              >
+                10.36227/techrxiv.175099633.32220861/v1
+              </a>
+            </span>
+          </section>
+          {/* END BEAUTIFIED CITATION CARD */}
+
         </main>
 
+
         {/* Footer */}
+        
         <footer style={styles.footer}>
           <p style={styles.footerText}>
             📜 By downloading, you agree to our{' '}
